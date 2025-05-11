@@ -2,29 +2,32 @@
 
 class Siswa_model
 {
-    private $dbh; // database handler
-    private $stmt;
+
+    private $table = 'siswa';
+
+    // MENDEFINISIKAN VARIABEL
+    private $db;
 
     public function __construct()
     {
-        // data source name (lokasi data hosting, dan nama database)
-        $dsn = 'mysql:host=localhost;dbname=phpmvc';
-
-        // TEST KONEKSI DATABASE
-        try {
-            $this->dbh = new PDO($dsn, 'root', '');
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
+        // UNTUK MENGINSTANSIASI CLASS DATABASE
+        // AGAR BISA MENGGUNAKAN SEMUA METHOD YANG ADA DI CLASS DATABASE
+        $this->db = new Database;
     }
 
     public function getAllSiswa()
     {
-        // MEMASUKAN QUERY MENGGUNAKAN PDO 
-        $this->stmt = $this->dbh->prepare('SELECT * FROM siswa');
-        $this->stmt->execute();
+        // SET QUERY
+        $this->db->query('SELECT * FROM ' . $this->table);
 
-        // MENGEMBALIKAN NILAI SEBAGAI ARRAY ASSOSIATIF
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        // MENGEMBALIKAN DATA UNTUK MENAMPILKAN SEMUA DATA YANG
+        // ADA PADA FUNCTION RESULT SET DI FILE DATABASE.PHP
+        return $this->db->resultSet();
+    }
+
+    public function getSiswaById($id) {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
     }
 }
