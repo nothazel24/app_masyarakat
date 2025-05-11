@@ -92,4 +92,9 @@ class Database
     {
         $this->dbh = null;
     }
+
+    public function rowCount()
+    {
+        return $this->stmt->rowCount();
+    }
 }

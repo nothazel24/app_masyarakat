@@ -21,4 +21,39 @@ class Siswa extends Controller
         $this->view('siswa/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function tambah()
+    {
+        if ($this->model('Siswa_model')->tambahDataSiswa($_POST) > 0) {
+
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            // REDIRECT KE HALAMAN UTAMA APABILA DATA BERHASIL DITAMBAHKAN
+            header('Location: ' . BASEURL . '/siswa');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            // REDIRECT KE HALAMAN UTAMA APABILA DATA BERHASIL DITAMBAHKAN
+            header('Location: ' . BASEURL . '/siswa');
+            exit;
+        }
+    }
+
+    public function hapus($id)
+    {
+        if ($this->model('Siswa_model')->hapusDataSiswa($id) > 0) {
+
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            // REDIRECT KE HALAMAN UTAMA APABILA DATA BERHASIL DITAMBAHKAN
+            header('Location: ' . BASEURL . '/siswa');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            // REDIRECT KE HALAMAN UTAMA APABILA DATA BERHASIL DITAMBAHKAN
+            header('Location: ' . BASEURL . '/siswa');
+            exit;
+        }
+    }
+
+    
+
 }
