@@ -15,6 +15,7 @@ class Siswa_model
         $this->db = new Database;
     }
 
+    // memilih semua data yang ada di dalam tabel
     public function getAllSiswa()
     {
         // SET QUERY
@@ -25,6 +26,7 @@ class Siswa_model
         return $this->db->resultSet();
     }
 
+    // Memilih data siswa berdasarkan id
     public function getSiswaById($id)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
@@ -32,6 +34,7 @@ class Siswa_model
         return $this->db->single();
     }
 
+    // memasukkan kolom baru/data baru ke dalam tabel
     public function tambahDataSiswa($data)
     {
         $query = "INSERT INTO siswa VALUES ('', :nama, :nis, :email, :jurusan)";
@@ -48,7 +51,9 @@ class Siswa_model
         return $this->db->rowCount();
     }
 
-    public function hapusDataSiswa($id) {
+    // menghapus data
+    public function hapusDataSiswa($id)
+    {
         $query = "DELETE FROM siswa WHERE id = :id";
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -57,5 +62,41 @@ class Siswa_model
 
         // JIKA BERHASIL DITAMBAHKAN, AKAN MENGHASILKAN ANGKA 1
         return $this->db->rowCount();
+    }
+
+    // mengubah data siswa
+    public function ubahDataSiswa($data)
+    {
+        $query = "UPDATE siswa SET 
+         nama = :nama,
+         nis = :nis,
+         email = :email,
+         jurusan = :jurusan
+         WHERE id = :id";
+
+        $this->db->query($query);
+
+        // binding data
+        $this->db->bind('nama', $data['nama']);
+        $this->db->bind('nis', $data['nis']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('jurusan', $data['jurusan']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+
+        // JIKA BERHASIL DITAMBAHKAN AKAN MENGHASILKAN ANGKA 1
+        return $this->db->rowCount();
+    }
+
+    public function cariDataSiswa()
+    {
+        $keyword = $_POST['keyword'];
+        // mencari berdasarkan nis
+        $query = "SELECT * FROM siswa WHERE nis LIKE :keyword";
+        $this->db->query($query);
+
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
     }
 }

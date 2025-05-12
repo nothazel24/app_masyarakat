@@ -1,19 +1,38 @@
 <div class="container mt-4">
 
+    <!-- Notifikasi -->
     <div class="row">
         <div class="col-lg-6">
             <?php Flasher::flash(); ?>
         </div>
     </div>
 
-    <div class="row">
+    <!-- Add section -->
+    <div class="row mb-3">
         <div class="col-lg-6">
-
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#formModal">
+            <button type="button" class="btn btn-primary mb-2 tombolTambahData" data-toggle="modal" data-target="#formModal">
                 Tambah Data Siswa
             </button>
+        </div>
+    </div>
+
+    <!-- Searching section -->
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <form action="<?= BASEURL; ?>/siswa/cari" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari NIS" name="keyword" id="keyword" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-warning" type="submit" id="tombolCari">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Daftar siswa -->
+    <div class="row">
+        <div class="col-lg-6">
 
             <h3>Daftar siswa</h3>
 
@@ -24,6 +43,7 @@
 
                         <a href="<?= BASEURL; ?>/siswa/hapus/<?= $sis['id']; ?>" class="badge badge-danger text-white float-right m-1" onclick="return confirm('Anda yakin?')">Hapus</a>
                         <a href="<?= BASEURL; ?>/siswa/detail/<?= $sis['id']; ?>" class="badge badge-info text-white float-right m-1">Detail</a>
+                        <a href="<?= BASEURL; ?>/siswa/edit/<?= $sis['id']; ?>" class="badge badge-warning text-white float-right m-1 tampilModalUbah" data-toggle="modal" data-target="#formModal" data-id="<?= $sis['id']; ?>">Edit</a>
 
                     </li>
                 <?php endforeach; ?>
@@ -44,6 +64,7 @@
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL; ?>/siswa/tambah" method="post">
+                    <input type="hidden" name="id" id="id">
 
                     <div class="form-group">
                         <label for="nama">Nama</label>
