@@ -1,8 +1,8 @@
 <?php
 
-class Masyarakat_model
+class Petugas_model
 {
-   private $table = 'masyarakat';
+   private $table = 'petugas';
    private $db;
 
    public function __construct()
@@ -10,15 +10,15 @@ class Masyarakat_model
       $this->db = new Database;
    }
 
-   // Menampilkan semua data masyarakat
-   public function getAllMasyarakat()
+   // Mengambil semua data petugas
+   public function getAllPetugas()
    {
       $this->db->query('SELECT * FROM ' . $this->table);
       return $this->db->resultSet();
    }
 
    // Memilih data masyarakat berdasarkan id
-   public function getMasyarakatById($id)
+   public function getPetugasById($id)
    {
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
       $this->db->bind('id', $id);

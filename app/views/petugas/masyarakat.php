@@ -24,16 +24,16 @@
             </thead>
 
             <tbody>
-               
-               <!-- fix bug! nanti -->
-               <?php $no = $start['start'] + 1; ?>
-               <?php foreach ($data['data'] as $row) : ?>
+               <?php $no = 1 ;?>
+               <?php foreach ($data['petugas'] as $msr) : ?>
+
                   <tr>
+
                      <td><?= $no++; ?></td>
-                     <td><?= htmlspecialchars($row['nama']); ?></td>
-                     <td><?= htmlspecialchars($row['nik']); ?></td>
-                     <td><?= htmlspecialchars($row['username']); ?></td>
-                     <td><?= htmlspecialchars($row['telp']); ?></td>
+                     <td><?= $msr['nama']; ?></td>
+                     <td><?= $msr['nik']; ?></td>
+                     <td><?= $msr['username']; ?></td>
+                     <td><?= $msr['telp']; ?></td>
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
                            <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
@@ -46,29 +46,7 @@
             </tbody>
          </table>
 
-         <p class="my-4">Showing <?= min($total_data, $start + $limit) ?> of <?= $total_data ?> entries</p>
       </div> <!-- tableUnit closing -->
-
-
-      <!-- Pagination -->
-      <nav>
-         <ul class="pagination justify-content-end mr-3">
-            <li class="page-item <?= ($current_page <= 1) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="?page=<?= $current_page - 1; ?>">
-                  << /a>
-            </li>
-
-            <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
-               <li class="page-item <?= ($current_page == $i) ? 'active' : ''; ?>">
-                  <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
-               </li>
-            <?php } ?>
-
-            <li class="page-item <?= ($current_page >= $total_pages) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="?page=<?= $current_page + 1; ?>">></a>
-            </li>
-         </ul>
-      </nav>
 
 
    </div> <!-- container closing -->

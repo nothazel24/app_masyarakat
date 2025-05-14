@@ -18,11 +18,12 @@ class Petugas extends Controller
    {
 
       $data['judul'] = 'Data Petugas';
+      $data['petugas'] = $this->model('Petugas_model')->getAllPetugas();
 
       // Include data
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
-      $this->view('petugas/petugas');
+      $this->view('petugas/petugas', $data);
       $this->view('templates/footer');
    }
 
@@ -30,21 +31,7 @@ class Petugas extends Controller
    {
 
       $data['judul'] = 'Data Masyarakat';
-
-      // Mengambil data masyarakat dengan variabel pagination
-      $pagination = $this->model('Masyarakat_model')->getMasyarakatLimit(4);
-
-      // Memastikan variabel pagination ada
-      $pagination = $this->model('Masyarakat_model')->getMasyarakatLimit(5);
-
-      $data['data'] = isset($pagination['data']) ? $pagination['data'] : [];
-      $data['total_pages'] = isset($pagination['total_pages']) ? $pagination['total_pages'] : 1;
-      $data['current_page'] = isset($pagination['current_page']) ? $pagination['current_page'] : 1;
-      $data['total_data'] = isset($pagination['total_data']) ? $pagination['total_data'] : 0;
-      $data['start'] = isset($pagination['start']) ? $pagination['start'] : 0;
-      $data['limit'] = isset($pagination['limit']) ? $pagination['limit'] : 5;
-
-      var_dump($data);
+      $data['masyarakat'] = $this->model('Masyarakat_model')->getAllMasyarakat();
 
       // Include data
       $this->view('templates/header', $data);
