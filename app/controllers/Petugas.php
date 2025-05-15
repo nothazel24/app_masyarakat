@@ -27,11 +27,25 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }
 
-   public function masyarakat()
+   public function masyarakat($page = 1)
    {
+      
+      // Pagination
+      $data['limit'] = 4;
+      $data['offset'] = ($page - 1) * $data['limit'];
+
 
       $data['judul'] = 'Data Masyarakat';
-      $data['masyarakat'] = $this->model('Masyarakat_model')->getAllMasyarakat();
+
+      // Mengambil data masyarakat (paginated)
+      $data['masyarakat'] = $this->model('Masyarakat_model')->getAllMasyarakatPaginated($data['limit'], $data['offset']);
+
+      // Mengambil data masyarakat
+      $data['total_masyarakat'] = $this->model('Masyarakat_model')->getTotalMasyarakat();
+
+      $data['total_pages'] = ceil($data['total_masyarakat'] / $data['limit']);
+      $data['current_page'] = $page;
+
 
       // Include data
       $this->view('templates/header', $data);

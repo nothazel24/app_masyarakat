@@ -24,8 +24,8 @@
             </thead>
 
             <tbody>
-               <?php $no = 1 ;?>
-               <?php foreach ($data['petugas'] as $msr) : ?>
+               <?php $no = $data['offset'] + 1; ?>
+               <?php foreach ($data['masyarakat'] as $msr) : ?>
 
                   <tr>
 
@@ -46,8 +46,35 @@
             </tbody>
          </table>
 
+          <p class="my-4">Showing <?= min($data['total_masyarakat'], $data['offset'] + $data['limit']) ?> of <?= $data['total_masyarakat'] ?> entries</p>
+
       </div> <!-- tableUnit closing -->
 
+      <!-- Pagination -->
+      <nav aria-label="page-navigation-example">
+         <ul class="pagination justify-content-end mr-3">
+
+            <!-- Tombol "Previous" -->
+            <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
+               <a class="page-link" href="<?= BASEURL ;?>/petugas/masyarakat/<?= max(1, $data['current_page'] - 1); ?>"><</a>
+            </li>
+
+            <!-- Nomor halaman -->
+            <?php if (isset($data['total_pages']) && isset($data['current_page'])): ?>
+               <?php for ($i = 1; $i <= $data['total_pages']; $i++) : ?>
+                  <li class="page-item <?= ($data['current_page'] == $i) ? 'active' : ''; ?>">
+                     <a class="page-link" href="<?= BASEURL ;?>/petugas/masyarakat/<?= $i; ?>"> <?= $i; ?> </a>
+                  </li>
+               <?php endfor; ?>
+            <?php endif; ?>
+
+            <!-- Tombol "Next" -->
+            <li class="page-item <?= ($data['current_page'] >= $data['total_pages']) ? 'disabled' : ''; ?>">
+               <a class="page-link" href="<?= BASEURL ;?>/petugas/masyarakat/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
+            </li>
+
+         </ul>
+      </nav>
 
    </div> <!-- container closing -->
 </div>
