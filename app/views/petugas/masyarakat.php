@@ -27,8 +27,7 @@
                <?php $no = $data['offset'] + 1; ?>
                <?php foreach ($data['masyarakat'] as $msr) : ?>
 
-                  <tr>
-
+                  <tr class = "text-left">
                      <td><?= $no++; ?></td>
                      <td><?= $msr['nama']; ?></td>
                      <td><?= $msr['nik']; ?></td>
@@ -51,7 +50,7 @@
       </div> <!-- tableUnit closing -->
 
       <!-- Pagination -->
-      <nav aria-label="page-navigation-example">
+      <nav aria-label="page-navigation">
          <ul class="pagination justify-content-end mr-3">
 
             <!-- Tombol "Previous" -->

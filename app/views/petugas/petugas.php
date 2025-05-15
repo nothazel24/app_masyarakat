@@ -20,7 +20,7 @@
       </div> <!-- divContainer closing tag -->
 
       <div class="tableUnit container-fluid table-responsive">
-         <table class="table table-striped text-center">
+         <table class="table table-striped text-left">
             <thead class="table-warning text-left p-5">
                <tr>
                   <th>No.</th>
@@ -33,11 +33,11 @@
             </thead>
 
             <tbody>
-               <?php foreach ($data['petugas'] as $index => $ptgs) : ?>
 
-                  <tr>
-
-                     <td><?= ($current_page - 1) * 5 + $index + 1; ?></td>
+               <?php $no = $data['offset'] + 1; ?>
+               <?php foreach ($data['petugas'] as $ptgs) : ?>
+                  <tr class="text-left">
+                     <td><?= $no++; ?></td>
                      <td><?= $ptgs['nama_petugas']; ?></td>
                      <td><?= $ptgs['username']; ?></td>
                      <td><?= $ptgs['telp']; ?></td>
@@ -54,22 +54,33 @@
             </tbody>
          </table>
 
-         <!-- Showing entries section -->
+         <p class="my-4">Showing <?= min($data['total_petugas'], $data['offset'] + $data['limit']) ?> of <?= $data['total_petugas'] ?> entries</p>
 
       </div> <!-- tableUnit closing tag-->
 
       <!-- Pagination -->
-      <nav aria-label="Page navigation example">
-         <ul class="pagination justify-content-end m-3">
-            <li class="page-item disabled">
-               <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <nav aria-label="page-navigation">
+         <ul class="pagination justify-content-end mr-3">
+
+            <!-- Tombol "Previous" -->
+            <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
+               <a class="page-link" href="<?= BASEURL ;?>/petugas/petugas/<?= max(1, $data['current_page'] - 1); ?>"><</a>
             </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-               <a class="page-link" href="#">Next</a>
+
+            <!-- Nomor halaman -->
+            <?php if (isset($data['total_pages']) && isset($data['current_page'])): ?>
+               <?php for ($i = 1; $i <= $data['total_pages']; $i++) : ?>
+                  <li class="page-item <?= ($data['current_page'] == $i) ? 'active' : ''; ?>">
+                     <a class="page-link" href="<?= BASEURL ;?>/petugas/petugas/<?= $i; ?>"> <?= $i; ?> </a>
+                  </li>
+               <?php endfor; ?>
+            <?php endif; ?>
+
+            <!-- Tombol "Next" -->
+            <li class="page-item <?= ($data['current_page'] >= $data['total_pages']) ? 'disabled' : ''; ?>">
+               <a class="page-link" href="<?= BASEURL ;?>/petugas/petugas/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
             </li>
+
          </ul>
       </nav>
 

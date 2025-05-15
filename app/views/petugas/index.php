@@ -30,6 +30,8 @@
             </div>
         </div> <!-- dashboardUnit closing tag-->
 
+        <?= var_dump($data) ;?>
+
     </div>
 
 </div>

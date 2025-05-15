@@ -7,10 +7,13 @@ class Petugas extends Controller
 
       $data['judul'] = 'Dashboard';
 
+      $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
+      $data['laporan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
+
       // Include data
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
-      $this->view('petugas/index');
+      $this->view('petugas/index', $data);
       $this->view('templates/footer');
    }
 
@@ -83,7 +86,7 @@ class Petugas extends Controller
       // Mengambil data masyarakat
       $data['total_pengaduan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
 
-      $data['total_pages'] = ceil($data['total_masyarakat'] / $data['limit']);
+      $data['total_pages'] = ceil($data['total_pengaduan'] / $data['limit']);
       $data['current_page'] = $page;
 
       // Include data
