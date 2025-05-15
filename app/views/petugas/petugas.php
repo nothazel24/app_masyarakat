@@ -1,17 +1,3 @@
-<?php
-
-// memanggil data dari database, dan otomatis mengkonversikannya ke array assosiatif
-// $data = query("petugas", 4);
-// $start = $data['start'];
-// $result = $data['data'];
-// $total_pages = $data['total_pages'];
-// $current_page = $data['current_page'];
-// $total_data = $data['total_data'];
-// $limit = $data['limit'];
-
-?>
-
-
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">

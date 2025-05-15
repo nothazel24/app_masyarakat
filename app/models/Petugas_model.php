@@ -10,13 +10,26 @@ class Petugas_model
       $this->db = new Database;
    }
 
-   // Mengambil semua data petugas
-   public function getAllPetugas()
+   // Mengambil data masyarakat dengan limit
+   public function getAllPetugasPaginated($limit, $offset)
    {
-      $this->db->query('SELECT * FROM ' . $this->table);
+      $this->db->query('SELECT * FROM ' . $this->table . ' LIMIT :limit OFFSET :offset');
+      $this->db->bind(':limit', $limit);
+      $this->db->bind(':offset', $offset);
+      $this->db->execute();
+
       return $this->db->resultSet();
    }
 
+   // Mengambil data total masyarakat
+   public function getTotalPetugas()
+   {
+      $this->db->query("SELECT COUNT(*) as total FROM " . $this->table);
+      $this->db->execute();
+
+      return $this->db->single()['total'];
+   }
+   
    // Memilih data masyarakat berdasarkan id
    public function getPetugasById($id)
    {

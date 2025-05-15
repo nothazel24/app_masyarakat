@@ -14,11 +14,24 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }
 
-   public function petugas()
+   public function petugas($page = 1)
    {
 
+      // Pagination
+      $data['limit'] = 4;
+      $data['offset'] = ($page - 1) * $data['limit'];
+
+
       $data['judul'] = 'Data Petugas';
-      $data['petugas'] = $this->model('Petugas_model')->getAllPetugas();
+
+      // Mengambil data masyarakat (paginated)
+      $data['petugas'] = $this->model('Petugas_model')->getAllPetugasPaginated($data['limit'], $data['offset']);
+
+      // Mengambil data masyarakat
+      $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
+
+      $data['total_pages'] = ceil($data['total_petugas'] / $data['limit']);
+      $data['current_page'] = $page;
 
       // Include data
       $this->view('templates/header', $data);
@@ -54,15 +67,29 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }
 
-   public function pengaduan()
+   public function pengaduan($page = 1)
    {
 
+      // Pagination
+      $data['limit'] = 4;
+      $data['offset'] = ($page - 1) * $data['limit'];
+
+
       $data['judul'] = 'Data Pengaduan';
+
+      // Mengambil data masyarakat (paginated)
+      $data['pengaduan'] = $this->model('Pengaduan_model')->getAllPengaduanPaginated($data['limit'], $data['offset']);
+
+      // Mengambil data masyarakat
+      $data['total_pengaduan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
+
+      $data['total_pages'] = ceil($data['total_masyarakat'] / $data['limit']);
+      $data['current_page'] = $page;
 
       // Include data
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
-      $this->view('petugas/pengaduan');
+      $this->view('petugas/pengaduan', $data);
       $this->view('templates/footer');
    }
 

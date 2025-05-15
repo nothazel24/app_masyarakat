@@ -10,13 +10,6 @@ class Masyarakat_model
       $this->db = new Database;
    }
 
-   // Menampilkan semua data masyarakat
-   // public function getAllMasyarakat()
-   // {
-   //    $this->db->query('SELECT * FROM ' . $this->table);
-   //    return $this->db->resultSet();
-   // }
-
    // Mengambil data masyarakat dengan limit
    public function getAllMasyarakatPaginated($limit, $offset)
    {
