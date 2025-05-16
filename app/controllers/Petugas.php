@@ -122,10 +122,19 @@ class Petugas extends Controller
    // MISC
    public function cari()
    {
-      $data['judul'] = 'Daftar siswa';
-      $data['sis'] = $this->model('Masyarakat_model')->cariDataSiswa();
+      $data['judul'] = "NIK";
+
+      // VALIDASI DATA KEYWORD
+      if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
+         header("Location:http://localhost/mvc/public/petugas/masyarakat");
+      } else {
+         // MENYIMPAN DATA KEDALAM VARIABEL
+         $data['masyarakat'] = $data['masyarakat'] = $this->model('Masyarakat_model')->cariDataMasyarakat();
+      }
+
       $this->view('templates/header', $data);
-      $this->view('siswa/index', $data);
+      $this->view('templates/sidebar');
+      $this->view('petugas/hasil', $data);
       $this->view('templates/footer');
    }
 
@@ -133,8 +142,10 @@ class Petugas extends Controller
    {
 
       $data['judul'] = 'Detail masyarakat';
-      $data['sis'] = $this->model('Mayarakat_model')->getMayarakatById($id);
+      $data['masyarakat'] = $this->model('Masyarakat_model')->getMayarakatById($id);
+
       $this->view('templates/header', $data);
+      $this->view('tamplates/sidebar');
       $this->view('petugas/detail', $data);
       $this->view('templates/footer');
    }

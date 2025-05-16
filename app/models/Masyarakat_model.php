@@ -21,7 +21,7 @@ class Masyarakat_model
       return $this->db->resultSet();
    }
 
-   // Mengambil data total masyarakat
+   //  Mengambil data total masyarakat
    public function getTotalMasyarakat()
    {
       $this->db->query("SELECT COUNT(*) as total FROM " . $this->table);
@@ -36,5 +36,22 @@ class Masyarakat_model
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
       $this->db->bind('id', $id);
       return $this->db->single();
+   }
+
+   // SEARCH FUNCTION
+   public function cariDataMasyarakat()
+   {
+      $keyword = $_POST['keyword'];
+      
+      // VALIDASI DATA
+      if (empty(trim($keyword))) {
+         return false;
+      }
+
+      // mencari berdasarkan nis
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nik LIKE :keyword');
+
+      $this->db->bind(':keyword', "%$keyword%");
+      return $this->db->resultSet();
    }
 }
