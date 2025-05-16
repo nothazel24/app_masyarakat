@@ -42,7 +42,7 @@ class Masyarakat_model
    public function cariDataMasyarakat()
    {
       $keyword = $_POST['keyword'];
-      
+
       // VALIDASI DATA
       if (empty(trim($keyword))) {
          return false;
@@ -54,4 +54,24 @@ class Masyarakat_model
       $this->db->bind(':keyword', "%$keyword%");
       return $this->db->resultSet();
    }
-}
+
+   // menghapus data
+   public function hapusDataMasyarakat($nik)
+   {
+      try {
+         $this->db->query('DELETE FROM ' . $this->table .  ' WHERE nik = :nik');
+         $this->db->bind(':nik', $nik);
+
+         $this->db->execute();
+         return $this->db->rowCount();
+
+      } catch (PDOException $e) {
+         if ($e->getCode() == '23000') {
+            return 'foreign_key_violation';
+         } else {
+            return false;
+         }
+      }
+   }
+
+} // Closing class tag

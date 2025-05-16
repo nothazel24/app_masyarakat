@@ -138,15 +138,25 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }
 
-   public function detail($id)
+   // Hapus data
+   public function hapus($nik)
    {
+      $result = $this->model('Masyarakat_model')->hapusDataMasyarakat($nik);
 
-      $data['judul'] = 'Detail masyarakat';
-      $data['masyarakat'] = $this->model('Masyarakat_model')->getMayarakatById($id);
+      // Validasi 
+      if ($result === 'foreign_key_violation') {
+         Flasher::setFlash('Gagal', 'dihapus, karena masih digunakan di tabel lain', 'danger');
 
-      $this->view('templates/header', $data);
-      $this->view('tamplates/sidebar');
-      $this->view('petugas/detail', $data);
-      $this->view('templates/footer');
+      // Jika data berhasil dihapus
+      } elseif ($result > 0) {
+         Flasher::setFlash('Berhasil', 'dihapus', 'success');
+
+      // Jika data gagal dihapus
+      } else {
+         Flasher::setFlash('Gagal', 'dihapus, data tidak ditemukan atau terjadi kesalahan lain', 'danger');
+      }
+
+      header('Location: ' . BASEURL . '/petugas/masyarakat');
+      exit;
    }
 }
