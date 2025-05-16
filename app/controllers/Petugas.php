@@ -7,8 +7,8 @@ class Petugas extends Controller
 
       $data['judul'] = 'Dashboard';
 
-      $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
-      $data['laporan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
+      // $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
+      // $data['laporan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
 
       // Include data
       $this->view('templates/header', $data);
@@ -17,6 +17,8 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }
 
+
+   // PAGINATION FOR ADMIN PAGE * Aduhh
    public function petugas($page = 1)
    {
 
@@ -45,7 +47,7 @@ class Petugas extends Controller
 
    public function masyarakat($page = 1)
    {
-      
+
       // Pagination
       $data['limit'] = 4;
       $data['offset'] = ($page - 1) * $data['limit'];
@@ -94,17 +96,46 @@ class Petugas extends Controller
       $this->view('templates/sidebar');
       $this->view('petugas/pengaduan', $data);
       $this->view('templates/footer');
-   }
+   } // END 
 
-   public function laporan()
+
+
+   // Mengambil data laporan dari model berdasarkan permintaan dari pengguna
+   public function laporan($tgl_awal = null, $tgl_akhir = null)
    {
 
+      if (!$tgl_awal) $tgl_awal = date('Y-m-01'); // Default: awal bulan
+      if (!$tgl_akhir) $tgl_akhir = date('Y-m-d'); // Default: hari ini
+
       $data['judul'] = 'Data Laporan';
+      $data['laporan'] = $this->model('Laporan_model')->getLaporanByDate($tgl_awal, $tgl_akhir);
 
       // Include data
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
-      $this->view('petugas/laporan');
+      $this->view('petugas/laporan', $data);
+      $this->view('templates/footer');
+   }
+
+
+
+   // MISC
+   public function cari()
+   {
+      $data['judul'] = 'Daftar siswa';
+      $data['sis'] = $this->model('Masyarakat_model')->cariDataSiswa();
+      $this->view('templates/header', $data);
+      $this->view('siswa/index', $data);
+      $this->view('templates/footer');
+   }
+
+   public function detail($id)
+   {
+
+      $data['judul'] = 'Detail masyarakat';
+      $data['sis'] = $this->model('Mayarakat_model')->getMayarakatById($id);
+      $this->view('templates/header', $data);
+      $this->view('petugas/detail', $data);
       $this->view('templates/footer');
    }
 }
