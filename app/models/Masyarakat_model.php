@@ -30,11 +30,12 @@ class Masyarakat_model
       return $this->db->single()['total'];
    }
 
-   // Memilih data masyarakat berdasarkan id
-   public function getMasyarakatById($id)
+   // Memilih data masyarakat berdasarkan NIK
+   public function getMasyarakatByNik($nik)
    {
-      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-      $this->db->bind('id', $id);
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nik=:nik');
+
+      $this->db->bind(':nik', $nik);
       return $this->db->single();
    }
 
@@ -55,6 +56,33 @@ class Masyarakat_model
       return $this->db->resultSet();
    }
 
+   // mengubah data siswa
+   public function ubahDataMasyarakat($data)
+   {
+      if (!empty($data['password'])) {
+         $this->db->query('UPDATE ' . $this->table . ' 
+         SET nama = :nama, telp = :telp, username = :username, password = :password 
+         WHERE nik = :nik');
+
+         $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT)); // hashing
+      } else {
+         $this->db->query('UPDATE ' . $this->table . ' 
+         SET nama = :nama, telp = :telp, username = :username 
+         WHERE nik = :nik');
+      }
+
+      // binding data
+      $this->db->bind(':nama', $data['nama']);
+      $this->db->bind(':nik', $data['nik']);
+      $this->db->bind(':telp', $data['telp']);
+      $this->db->bind(':username', $data['username']);
+
+      $this->db->execute();
+
+      // JIKA BERHASIL DITAMBAHKAN AKAN MENGHASILKAN ANGKA 1
+      return $this->db->rowCount();
+   }
+
    // menghapus data
    public function hapusDataMasyarakat($nik)
    {
@@ -64,7 +92,6 @@ class Masyarakat_model
 
          $this->db->execute();
          return $this->db->rowCount();
-
       } catch (PDOException $e) {
          if ($e->getCode() == '23000') {
             return 'foreign_key_violation';
@@ -73,5 +100,4 @@ class Masyarakat_model
          }
       }
    }
-
 } // Closing class tag

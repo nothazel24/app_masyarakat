@@ -129,13 +129,46 @@ class Petugas extends Controller
          header("Location:http://localhost/mvc/public/petugas/masyarakat");
       } else {
          // MENYIMPAN DATA KEDALAM VARIABEL
-         $data['masyarakat'] = $data['masyarakat'] = $this->model('Masyarakat_model')->cariDataMasyarakat();
+         $data['masyarakat'] = $this->model('Masyarakat_model')->cariDataMasyarakat();
       }
 
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
       $this->view('petugas/hasil', $data);
       $this->view('templates/footer');
+   }
+
+
+   // Edit Data
+   public function edit($nik)
+   {
+
+      $data['judul'] = 'Edit Data';
+      $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatByNik($nik);
+
+      if(!$data['masyarakat']) {
+         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         header('Location: ' . BASEURL . '/petugas/masyarakat');
+         exit;
+      }
+
+      $this->view('templates/header', $data);
+      $this->view('templates/sidebar');
+      $this->view('edit/index', $data);
+      $this->view('templates/footer');
+   }
+
+   // execute ubah data
+   public function ubah()
+   {
+      if ($this->model('Masyarakat_model')->ubahDataMasyarakat($_POST) > 0) {
+         Flasher::setFlash('berhasil', 'diubah', 'success');
+      } else {
+         Flasher::setFlash('gagal', 'diubah', 'danger');
+      }
+
+      header('Location: ' . BASEURL . '/petugas/masyarakat');
+      exit;
    }
 
    // Hapus data
@@ -147,11 +180,11 @@ class Petugas extends Controller
       if ($result === 'foreign_key_violation') {
          Flasher::setFlash('Gagal', 'dihapus, karena masih digunakan di tabel lain', 'danger');
 
-      // Jika data berhasil dihapus
+         // Jika data berhasil dihapus
       } elseif ($result > 0) {
          Flasher::setFlash('Berhasil', 'dihapus', 'success');
 
-      // Jika data gagal dihapus
+         // Jika data gagal dihapus
       } else {
          Flasher::setFlash('Gagal', 'dihapus, data tidak ditemukan atau terjadi kesalahan lain', 'danger');
       }

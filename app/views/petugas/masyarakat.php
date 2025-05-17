@@ -44,7 +44,7 @@
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
 
-                           <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
+                           <a href="<?= BASEURL; ?>/petugas/edit/<?= $msr['nik'];?>" class="text-primary mr-3 text-dark tampilModalUbah" style="text-decoration: none;" data-nik="<?= $msr['nik']?>">Edit</a>
 
                            <button class="btn btn-danger btn-sm">
                               <a href="<?= BASEURL; ?>/petugas/hapus/<?= $msr['nik']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
