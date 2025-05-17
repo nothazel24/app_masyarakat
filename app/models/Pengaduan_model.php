@@ -25,7 +25,16 @@ class Pengaduan_model
    // Mengambil data total masyarakat
    public function getTotalPengaduan()
    {
-      $this->db->query("SELECT COUNT(*) as total FROM " . $this->table);
+      $this->db->query('SELECT COUNT(*) as total FROM ' . $this->table);
+      $this->db->execute();
+
+      return $this->db->single()['total'];
+   }
+
+   public function getStatus($status) {
+      $this->db->query('SELECT COUNT(*) AS total FROM ' . $this->table . ' WHERE status = :status');
+
+      $this->db->bind(':status', $status);
       $this->db->execute();
 
       return $this->db->single()['total'];

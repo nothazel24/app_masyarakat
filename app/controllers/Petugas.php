@@ -7,8 +7,12 @@ class Petugas extends Controller
 
       $data['judul'] = 'Dashboard';
 
-      // $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
-      // $data['laporan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
+      $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
+
+      // LAPORAN
+      $data['total_laporan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
+      $data['jumlah_proses'] = $this->model('Pengaduan_model')->getStatus('proses');
+      $data['jumlah_selesai'] = $this->model('Pengaduan_model')->getStatus('selesai');
 
       // Include data
       $this->view('templates/header', $data);

@@ -8,29 +8,27 @@
             <div class="border border-black rounded m-3 text-center font-weight-bold" style="width: 12rem; height: fit-content;">
                   <p>Petugas</p>
                   <hr class="dbLine">
-                  <p>0</p>
+                  <p><?= $data['total_petugas'];?></p>
             </div>
 
             <div class="border border-black rounded m-3 text-center font-weight-bold" style="width: 12rem; height: fit-content;">
                   <p>Laporan Terverifikasi</p>
                   <hr class="dbLine">
-                  <p>0</p>
+                  <p><?= $data['total_laporan'];?></p>
             </div>
 
             <div class="border border-black rounded m-3 text-center font-weight-bold" style="width: 12rem; height: fit-content;">
                   <p>Laporan Diproses</p>
                   <hr class="dbLine">
-                  <p>0</p>
+                  <p><?= $data['jumlah_proses'];?></p>
             </div>
 
             <div class="border border-black rounded m-3 text-center font-weight-bold" style="width: 12rem; height: fit-content;">
                   <p>Laporan Selesai</p>
                   <hr class="dbLine">
-                  <p>0</p>
+                  <p><?= $data['jumlah_selesai'];?></p>
             </div>
         </div> <!-- dashboardUnit closing tag-->
-
-        <?= var_dump($data) ;?>
 
     </div>
 
