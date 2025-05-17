@@ -19,7 +19,7 @@
                   <th>Tanggal</th>
                   <th>Isi laporan</th>
                   <th>Status</th>
-                  <th>Detail</th>
+                  <th>Aksi</th>
                </tr>
             </thead>
 
@@ -49,7 +49,7 @@
                      </td>
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
-                           <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
+                           <a href="<?= BASEURL; ?>/petugas/detail/<?= $laporan['id_pengaduan'];?>" class="text-dark mr-3" style="text-decoration: none;" target="_self">Detail</a>
                            <button class="btn btn-danger btn-sm">Hapus</button>
                         </div>
                      </td>

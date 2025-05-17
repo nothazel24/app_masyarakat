@@ -31,12 +31,33 @@ class Pengaduan_model
       return $this->db->single()['total'];
    }
 
-   public function getStatus($status) {
+   public function getStatus($status)
+   {
       $this->db->query('SELECT COUNT(*) AS total FROM ' . $this->table . ' WHERE status = :status');
 
       $this->db->bind(':status', $status);
       $this->db->execute();
 
       return $this->db->single()['total'];
+   }
+
+
+   // Mencari data berdasarkan tanggal
+   public function getLaporanByDate($tgl_awal, $tgl_akhir)
+   {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE tgl_pengaduan BETWEEN :tgl_awal AND :tgl_akhir');
+
+      $this->db->bind(':tgl_awal', $tgl_awal);
+      $this->db->bind(':tgl_akhir', $tgl_akhir);
+
+      return $this->db->resultSet();
+   }
+   
+   public function getLaporanById($id)
+   {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_pengaduan=:id_pengaduan');
+
+      $this->db->bind(':id_pengaduan', $id);
+      return $this->db->single();
    }
 }

@@ -112,12 +112,32 @@ class Petugas extends Controller
       if (!$tgl_akhir) $tgl_akhir = date('Y-m-d'); // Default: hari ini
 
       $data['judul'] = 'Data Laporan';
-      $data['laporan'] = $this->model('Laporan_model')->getLaporanByDate($tgl_awal, $tgl_akhir);
+      $data['laporan'] = $this->model('Pengaduan_model')->getLaporanByDate($tgl_awal, $tgl_akhir);
 
       // Include data
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
       $this->view('petugas/laporan', $data);
+      $this->view('templates/footer');
+   }
+
+   // DETAIL BERDASARKAN ID
+   public function detail($id)
+   {
+
+      $data['judul'] = 'Detail Data';
+      $data['detail_laporan'] = $this->model('Pengaduan_model')->getLaporanById($id);
+      $data['tanggapan'] = $this->model('Tanggapan_model')->tanggapan($id);
+
+      if(!$data['detail_laporan']) {
+         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         header('Location: ' . BASEURL . '/petugas/laporan');
+         exit;
+      }
+
+      $this->view('templates/header', $data);
+      $this->view('templates/sidebar');
+      $this->view('petugas/detail', $data);
       $this->view('templates/footer');
    }
 
@@ -194,6 +214,28 @@ class Petugas extends Controller
       }
 
       header('Location: ' . BASEURL . '/petugas/masyarakat');
+      exit;
+   }
+
+   public function tanggapi() {
+      if (!isset($_POST['submit'])) {
+         header('Location: ' . BASEURL . '/petugas/pengaduan');
+         exit;
+      }
+
+      $id = $_POST['id_pengaduan'];
+      $status = $_POST['status'];
+      $tanggapan = $_POST['tanggapan'];
+
+      if (empty($status) || empty($tanggapan)) {
+         Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+         header('Location: ' . BASEURL . 'petugas/detail');
+         exit;
+      }
+
+      $this->model('Tanggapan_model')->kirimTanggapan($id, $status, $tanggapan);
+      Flasher::setFlash('Tanggapan berhasil dikirim', '', 'success');
+      header('Location: ' . BASEURL . '/petugas/detail/' . $id);
       exit;
    }
 }
