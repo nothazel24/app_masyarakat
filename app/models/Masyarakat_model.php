@@ -95,4 +95,5 @@ class Masyarakat_model
          }
       }
    }
+   
 } // Closing class tag

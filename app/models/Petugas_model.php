@@ -46,5 +46,19 @@ class Petugas_model
       $this->db->bind(':keyword', "%$keyword%");
       return $this->db->resultSet();
    }
+
+   public function tambahDataPetugas($data) {
+      $this->db->query('INSERT INTO ' . $this->table . ' (nama_petugas, username, password, telp, level) VALUES (:nama_petugas, :username, :password, :telp, :level)');
+
+      $this->db->bind(':nama_petugas', $data['nama_petugas']);
+      $this->db->bind(':username', $data['username']);
+      $this->db->bind(':password', $data['password']);
+      $this->db->bind(':telp', $data['telp']);
+      $this->db->bind(':level', $data['level']);
+
+      $this->db->execute();
+
+      return $this->db->rowCount();
+   }
    
 }

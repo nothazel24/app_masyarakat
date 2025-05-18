@@ -7,7 +7,7 @@
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
          <div>
-            <a href="<?= BASEURL; ?>/detail/tambahPetugas" target="_self" style="text-decoration: none;"><button class="btn btn-warning p-2 text-white font-weight-bold">+ Tambah petugas</button></a>
+            <a href="<?= BASEURL; ?>/detail/tambahpetugas" target="_self" style="text-decoration: none;"><button class="btn btn-warning p-2 text-white font-weight-bold">+ Tambah petugas</button></a>
          </div>
 
          <div class="d-flex justify-content-end">
@@ -44,7 +44,7 @@
                      <td style="text-transform: capitalize; "><?= $ptgs['level']; ?></td>
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
-                           <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
+                           <a href="<?= BASEURL; ?>/petugas/edit/<?= $ptgs['id_petugas'];?>" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
                            <button class="btn btn-danger btn-sm">Hapus</button>
                         </div>
                      </td>

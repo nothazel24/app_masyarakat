@@ -107,9 +107,6 @@ class Petugas extends Controller
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $tgl_awal = $_POST['tgl_awal'];
          $tgl_akhir = $_POST['tgl_akhir'];
-
-         // header("Location: " . BASEURL . "/petugas/laporan/$tgl_awal/$tgl_akhir");
-         // exit;
       }
 
       if (!$tgl_awal) $tgl_awal = date('Y-m-01'); // Default: awal bulan
