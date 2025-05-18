@@ -6,7 +6,6 @@ class Petugas extends Controller
    {
 
       $data['judul'] = 'Dashboard';
-
       $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
 
       // LAPORAN
@@ -102,9 +101,6 @@ class Petugas extends Controller
       $this->view('templates/footer');
    } // END 
 
-
-
-   // Mengambil data laporan dari model berdasarkan permintaan dari pengguna
    public function laporan($tgl_awal = null, $tgl_akhir = null)
    {
 
@@ -119,7 +115,7 @@ class Petugas extends Controller
       $this->view('templates/sidebar');
       $this->view('petugas/laporan', $data);
       $this->view('templates/footer');
-   }
+   }  // END * BUG LAPORAN
 
    // DETAIL BERDASARKAN ID
    public function detail($id)
@@ -129,7 +125,7 @@ class Petugas extends Controller
       $data['detail_laporan'] = $this->model('Pengaduan_model')->getLaporanById($id);
       $data['tanggapan'] = $this->model('Tanggapan_model')->tanggapan($id);
 
-      if(!$data['detail_laporan']) {
+      if (!$data['detail_laporan']) {
          Flasher::setFlash('gagal', 'ditemukan', 'danger');
          header('Location: ' . BASEURL . '/petugas/laporan');
          exit;
@@ -144,23 +140,62 @@ class Petugas extends Controller
 
 
    // MISC
-   public function cari()
-   {
-      $data['judul'] = "NIK";
 
+   // CARI DATA BERDASARKAN * NIK DAN TANGGAL SIH..
+   public function carimasyarakat()
+   {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
          header("Location:http://localhost/mvc/public/petugas/masyarakat");
+         exit;
       } else {
          // MENYIMPAN DATA KEDALAM VARIABEL
-         $data['masyarakat'] = $this->model('Masyarakat_model')->cariDataMasyarakat();
+         $keyword = trim($_POST['keyword']);
+         $result = $this->model('Masyarakat_model')->cariDataMasyarakat($keyword);
+         $this->load('Masyarakat', 'masyarakat', $result);
       }
+   }
+
+   public function caripetugas()
+   {
+      // VALIDASI DATA KEYWORD
+      if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
+         header("Location:http://localhost/mvc/public/petugas/petugas");
+         exit;
+      } else {
+         // MENYIMPAN DATA KEDALAM VARIABEL
+         $keyword = trim($_POST['keyword']);
+         $result = $this->model('Petugas_model')->cariDataPetugas($keyword);
+         $this->load('Petugas', 'petugas', $result);
+      }
+   }
+
+   public function caripengaduan()
+   {
+      // VALIDASI DATA KEYWORD
+      if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
+         header("Location:http://localhost/mvc/public/petugas/pengaduan");
+         exit;
+      } else {
+         // MENYIMPAN DATA KEDALAM VARIABEL
+         $keyword = trim($_POST['keyword']);
+         $result = $this->model('Pengaduan_model')->cariDataPengaduan($keyword);
+         $this->load('Pengaduan', 'pengaduan', $result);
+      }
+   }
+
+   // LOAD HASIL
+   private function load($judul, $dataTipe, $result)
+   {
+      $data['judul'] = $judul;
+      $data[$dataTipe] = $result;
 
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
       $this->view('petugas/hasil', $data);
       $this->view('templates/footer');
-   }
+   } // END
+
 
 
    // Edit Data
@@ -170,7 +205,7 @@ class Petugas extends Controller
       $data['judul'] = 'Edit Data';
       $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatByNik($nik);
 
-      if(!$data['masyarakat']) {
+      if (!$data['masyarakat']) {
          Flasher::setFlash('gagal', 'ditemukan', 'danger');
          header('Location: ' . BASEURL . '/petugas/masyarakat');
          exit;
@@ -217,7 +252,8 @@ class Petugas extends Controller
       exit;
    }
 
-   public function tanggapi() {
+   public function tanggapi()
+   {
       if (!isset($_POST['submit'])) {
          header('Location: ' . BASEURL . '/petugas/pengaduan');
          exit;

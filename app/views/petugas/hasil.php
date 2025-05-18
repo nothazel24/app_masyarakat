@@ -6,14 +6,7 @@
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
          <div>
-            <a href="<?= BASEURL; ?>/petugas/masyarakat" target="_self" style="text-decoration: none;"><button class="btn btn-warning p-2 text-white font-weight-bold">Kembali</button></a>
-         </div>
-
-         <div class="d-flex justify-content-end">
-            <form action="<?= BASEURL; ?>/petugas/cari/" method="post" class="form-inline" id="formCari">
-               <input class="form-control mr-2" type="search" placeholder="Cari NIK" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
-               <button class="btn btn-outline-warning" type="submit" id="tombolCari">Cari</button>
-            </form>
+            <a href="<?= BASEURL; ?>/petugas/<?= strtolower($data['judul']); ?>" target="_self" style="text-decoration: none;"><button class="btn btn-warning p-2 text-white font-weight-bold">Kembali</button></a>
          </div>
 
       </div>
@@ -22,43 +15,56 @@
          <table class="table table-striped text-left">
             <thead class="table-warning">
                <tr>
-                  <th>No.</th>
-                  <th>Nama</th>
-                  <th>NIK</th>
-                  <th>Username</th>
-                  <th>No. Telp</th>
-                  <th>Detail</th>
+                  <?php if (!empty($data['masyarakat'])) : ?>
+                     <th>No.</th>
+                     <th>Nama</th>
+                     <th>NIK</th>
+                     <th>Username</th>
+                     <th>No. Telp</th>
+                     <th>Aksi</th>
+                  <?php elseif (!empty($data['petugas'])) : ?>
+                     <th>No.</th>
+                     <th>Nama</th>
+                     <th>Username</th>
+                     <th>No. Telp</th>
+                     <th>Level</th>
+                     <th>Aksi</th>
+                  <?php elseif (!empty($data['pengaduan'])) : ?>
+                     <th>No.</th>
+                     <th>Tanggal pengaduan</th>
+                     <th>NIK</th>
+                     <th>Isi laporan</th>
+                     <th>Foto</th>
+                     <th>Status</th>
+                     <th>Aksi</th>
+                  <?php endif; ?>
                </tr>
             </thead>
 
             <tbody>
-               <?php $no = 1; ?>
-               <?php foreach ($data['masyarakat'] as $msr) : ?>
 
-                  <tr class="text-left">
-                     <td><?= $no++; ?></td>
-                     <td><?= $msr['nama']; ?></td>
-                     <td><?= $msr['nik']; ?></td>
-                     <td><?= $msr['username']; ?></td>
-                     <td><?= $msr['telp']; ?></td>
-                     <td>
-                        <div class="d-flex justify-content-start align-items-center">
-                           <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
-                           <button class="btn btn-danger btn-sm">Hapus</button>
-                        </div>
-                     </td>
-                  </tr>
-                  <?php if(empty($msr['nik'])) :?>
-                     <tr>
-                        <td class="text-center bg-warning">Data tidak ditemukan atauKata kunci kosong!</td>
-                     </tr>
-                  <?php endif; ?>
-               <?php endforeach; ?>
+               <!-- MASYARAKAT -->
+               <?php if (!empty($data['masyarakat'])) :  ?>
+                  <?php $this->view('components/tabel_masyarakat', $data); ?>
+
+
+                  <!-- PETUGAS -->
+               <?php elseif (!empty($data['petugas'])) :  ?>
+                  <?php $this->view('components/tabel_petugas', $data); ?>
+
+
+               <?php elseif (!empty($data['pengaduan'])) :  ?>
+                  <?php $this->view('components/tabel_pengaduan', $data); ?>
+
+               <?php else : ?>
+                  <div class="container-fluid bg-danger rounded p-3">
+                     <p class="text-white font-weight-bold">Data Keyword belum dimasukkan!</p>
+                  </div>
+
+               <?php endif; ?>
 
             </tbody>
          </table>
-
-         <p class="my-4">Showing data by NIK <b><?= $msr['nik']; ?></b></p>
 
       </div> <!-- tableUnit closing -->
 

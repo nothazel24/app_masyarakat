@@ -10,7 +10,7 @@ class Petugas_model
       $this->db = new Database;
    }
 
-   // Mengambil data masyarakat dengan limit
+   // Mengambil data Petugas dengan limit
    public function getAllPetugasPaginated($limit, $offset)
    {
       $this->db->query('SELECT * FROM ' . $this->table . ' LIMIT :limit OFFSET :offset');
@@ -21,7 +21,7 @@ class Petugas_model
       return $this->db->resultSet();
    }
 
-   // Mengambil data total masyarakat
+   // Mengambil data total Petugas
    public function getTotalPetugas()
    {
       $this->db->query("SELECT COUNT(*) as total FROM " . $this->table);
@@ -29,12 +29,22 @@ class Petugas_model
 
       return $this->db->single()['total'];
    }
-   
-   // Memilih data masyarakat berdasarkan id
+
+   // Memilih data Petugas berdasarkan id
    public function getPetugasById($id)
    {
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
       $this->db->bind('id', $id);
       return $this->db->single();
    }
+
+   // SEARCH DATA PETUGAS
+   public function cariDataPetugas($keyword)
+   {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username LIKE :keyword');
+
+      $this->db->bind(':keyword', "%$keyword%");
+      return $this->db->resultSet();
+   }
+   
 }

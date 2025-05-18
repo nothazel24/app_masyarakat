@@ -40,14 +40,9 @@ class Masyarakat_model
    }
 
    // SEARCH FUNCTION
-   public function cariDataMasyarakat()
+   public function cariDataMasyarakat($keyword)
    {
       $keyword = $_POST['keyword'];
-
-      // VALIDASI DATA
-      if (empty(trim($keyword))) {
-         return false;
-      }
 
       // mencari berdasarkan nis
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE nik LIKE :keyword');

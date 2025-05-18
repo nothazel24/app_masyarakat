@@ -52,12 +52,21 @@ class Pengaduan_model
 
       return $this->db->resultSet();
    }
-   
+
    public function getLaporanById($id)
    {
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_pengaduan=:id_pengaduan');
 
       $this->db->bind(':id_pengaduan', $id);
       return $this->db->single();
+   }
+
+   // SEARCH DATA PETUGAS
+   public function cariDataPengaduan($keyword)
+   {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE tgl_pengaduan LIKE :keyword');
+
+      $this->db->bind(':keyword', "%$keyword%");
+      return $this->db->resultSet();
    }
 }
