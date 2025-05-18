@@ -43,7 +43,7 @@ class Pengaduan_model
 
 
    // Mencari data berdasarkan tanggal
-   public function getLaporanByDate($tgl_awal, $tgl_akhir)
+   public function getPengaduanByDate($tgl_awal, $tgl_akhir)
    {
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE tgl_pengaduan BETWEEN :tgl_awal AND :tgl_akhir');
 

@@ -104,11 +104,19 @@ class Petugas extends Controller
    public function laporan($tgl_awal = null, $tgl_akhir = null)
    {
 
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+         $tgl_awal = $_POST['tgl_awal'];
+         $tgl_akhir = $_POST['tgl_akhir'];
+
+         // header("Location: " . BASEURL . "/petugas/laporan/$tgl_awal/$tgl_akhir");
+         // exit;
+      }
+
       if (!$tgl_awal) $tgl_awal = date('Y-m-01'); // Default: awal bulan
       if (!$tgl_akhir) $tgl_akhir = date('Y-m-d'); // Default: hari ini
 
       $data['judul'] = 'Data Laporan';
-      $data['laporan'] = $this->model('Pengaduan_model')->getLaporanByDate($tgl_awal, $tgl_akhir);
+      $data['laporan'] = $this->model('Pengaduan_model')->getPengaduanByDate($tgl_awal, $tgl_akhir);
 
       // Include data
       $this->view('templates/header', $data);

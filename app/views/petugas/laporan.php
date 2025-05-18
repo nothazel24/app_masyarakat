@@ -36,51 +36,66 @@
 
 
       <!-- Data result Layout section -->
-
       <?php if (isset($_POST['submit'])) : ?>
 
-         <div class="rounded border border-black ml-4 mt-5">
-            <div class="d-flex justify-content-between align-self-center pl-4 pr-4 pt-3">
-               <h2>Data laporan</h2>
-               <button class="btn btn-danger text-white font-weight-bold pl-4 pr-4 rounded">Export PDF</button>
-            </div>
-            <hr>
+         <?php if (!empty($data['laporan'])) : ?>
+            <div class="rounded border border-black ml-4 mt-5">
+               <div class="d-flex justify-content-between align-self-center pl-4 pr-4 pt-3">
+                  <h2>Data laporan</h2>
+                  <button class="btn btn-danger text-white font-weight-bold pl-4 pr-4 rounded">Export PDF</button>
+               </div>
+               <hr>
 
-            <div class="table-responsive">
-               <div class="container">
-                  <table class=" table table-striped text-left">
-                     <thead class="table-warning">
-                        <tr class="font-weight-bold">
-                           <td>No.</td>
-                           <td>Tanggal</td>
-                           <td>Isi laporan</td>
-                           <td>Status</td>
-                        </tr>
-                     </thead>
-
-                     <tbody>
-                        <?php $no = 1; ?>
-                        <?php foreach ($data['laporan'] as $laporan) : ?>
-                           <tr class="text-left">
-                              <td><?= $no++; ?></td>
-                              <td><?= $laporan['tgl_pengaduan']; ?></td>
-                              <td><?= $laporan['isi_laporan']; ?></td>
-                              <td><?= $laporan['status']; ?></td>
+               <div class="table-responsive">
+                  <div class="container">
+                     <table class="table table-striped text-left">
+                        <thead class="table-warning">
+                           <tr class="font-weight-bold">
+                              <td>No.</td>
+                              <td>Tanggal</td>
+                              <td>Isi laporan</td>
+                              <td>Status</td>
                            </tr>
-                        <?php endforeach; ?>
-                     </tbody>
-                  </table>
+                        </thead>
+
+                        <tbody>
+                           <?php $no = 1; ?>
+                           <?php foreach ($data['laporan'] as $laporan) : ?>
+                              <tr class="text-left">
+                                 <td><?= $no++; ?></td>
+                                 <td><?= $laporan['tgl_pengaduan']; ?></td>
+                                 <td><?= $laporan['isi_laporan']; ?></td>
+                                 <td>
+                                    <?php if ($laporan['status'] === 'proses') : ?>
+                                       <div class="bg-warning p-2 rounded font-weight-bold text-white w-50 text-capitalize">
+                                          <?= $laporan['status']; ?>
+                                       </div>
+                                    <?php elseif ($laporan['status'] === 'selesai') : ?>
+                                       <div class="bg-success p-2 m-2 rounded font-weight-bold text-white w-50 text-capitalize">
+                                          <?= $laporan['status']; ?>
+                                       </div>
+                                    <?php else : ?>
+                                       <div class="bg-danger p-2 rounded font-weight-bold text-white w-50 text-capitalize">
+                                          Undefined
+                                       </div>
+                                    <?php endif; ?>
+                                 </td>
+                              </tr>
+                           <?php endforeach; ?>
+                        </tbody>
+                     </table>
+                  </div>
                </div>
             </div>
 
          <?php else : ?>
-            <!-- <div class="bg-danger p-2">
-                    <p class="font-weight-bold text-white text-center m-1">Data tidak ditemukan!</p>
-                </div> *buat nanti aja, --iann -->
-
-         </div> <!-- Data closing tag -->
+            <div class="bg-danger p-3 rounded text-white font-weight-bold ml-4 mt-4">
+               Data tidak ditemukan untuk tanggal yang dipilih.
+            </div>
+         <?php endif; ?>
 
       <?php endif; ?>
+
 
    </div> <!-- container closing -->
 </div>
