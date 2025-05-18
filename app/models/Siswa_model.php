@@ -88,7 +88,9 @@ class Siswa_model
         // JIKA BERHASIL DITAMBAHKAN AKAN MENGHASILKAN ANGKA 1
         return $this->db->rowCount();
     }
+    
 
+    // Dibutuhkan
     public function cariDataSiswa()
     {
         $keyword = $_POST['keyword'];

@@ -1,5 +1,7 @@
 <?php
 
+// OPEN NOTEPAD FOR YOUR TASK!
+
 class Siswa extends Controller
 {
     public function index()
@@ -38,6 +40,8 @@ class Siswa extends Controller
         }
     }
 
+
+    // Dibutuhkan
     public function hapus($id)
     {
         if ($this->model('Siswa_model')->hapusDataSiswa($id) > 0) {
@@ -54,6 +58,8 @@ class Siswa extends Controller
         }
     }
 
+
+    // dibutuhkan
     // menangkap data yang dikirim oleh ajax
     public function getubah()
     {
@@ -62,6 +68,7 @@ class Siswa extends Controller
         echo json_encode($this->model('Siswa_model')->getSiswaById($_POST['id']));
     }
 
+    // dibutuhkan
     // menjalankan perintah ubah data
     public function ubah()
     {
@@ -79,7 +86,8 @@ class Siswa extends Controller
         }
     }
 
-    // fucntion cari berdasarkan nis
+    //dibutuhkan
+    // function cari berdasarkan nis
     public function cari()
     {
         $data['judul'] = 'Daftar siswa';

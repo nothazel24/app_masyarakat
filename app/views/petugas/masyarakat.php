@@ -11,9 +11,9 @@
       </div>
 
          <div class="d-flex justify-content-end m-3">
-            <form action="<?= BASEURL; ?>/petugas/cari/" method="post" class="form-inline" id="formCari">
+            <form action="<?= BASEURL; ?>/petugas/carimasyarakat/"  method="post" class="form-inline" id="formCari">
                <input class="form-control mr-2" type="search" placeholder="Cari NIK" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
-               <button class="btn btn-outline-warning" type="submit" id="tombolCari">Cari</button>
+               <button class="btn btn-outline-warning" type="submit" id="tombolCari" required />Cari</button>
             </form>
          </div>
 

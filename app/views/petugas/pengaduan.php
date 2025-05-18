@@ -5,9 +5,9 @@
 
 
       <div class="d-flex justify-content-end m-3">
-         <form action="" method="post" class="form-inline">
-            <input class="form-control mr-2" type="search" placeholder="Cari data" aria-label="Search">
-            <button class="btn btn-outline-warning" type="submit">Cari</button>
+         <form action="<?= BASEURL; ?>/petugas/caripengaduan/" method="post" class="form-inline" id="formCari">
+            <input class="form-control mr-2" type="search" placeholder="YYYY-MM-dd" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
+            <button class="btn btn-outline-warning" type="submit" id="tombolCari" required />Cari</button>
          </form>
       </div>
 
@@ -49,7 +49,7 @@
                      </td>
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
-                           <a href="<?= BASEURL; ?>/petugas/detail/<?= $laporan['id_pengaduan'];?>" class="text-dark mr-3" style="text-decoration: none;" target="_self">Detail</a>
+                           <a href="<?= BASEURL; ?>/petugas/detail/<?= $laporan['id_pengaduan']; ?>" class="text-dark mr-3" style="text-decoration: none;" target="_self">Detail</a>
                            <button class="btn btn-danger btn-sm">Hapus</button>
                         </div>
                      </td>
@@ -60,7 +60,7 @@
             </tbody>
          </table>
 
-        <p class="my-4">Showing <?= min($data['total_pengaduan'], $data['offset'] + $data['limit']) ?> of <?= $data['total_pengaduan'] ?> entries</p>
+         <p class="my-4">Showing <?= min($data['total_pengaduan'], $data['offset'] + $data['limit']) ?> of <?= $data['total_pengaduan'] ?> entries</p>
 
       </div> <!-- tableUnit closing tag-->
 
@@ -71,21 +71,22 @@
 
             <!-- Tombol "Previous" -->
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="<?= BASEURL ;?>/petugas/pengaduan/<?= max(1, $data['current_page'] - 1); ?>"><</a>
+               <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= max(1, $data['current_page'] - 1); ?>">
+                  <</a>
             </li>
 
             <!-- Nomor halaman -->
             <?php if (isset($data['total_pages']) && isset($data['current_page'])): ?>
                <?php for ($i = 1; $i <= $data['total_pages']; $i++) : ?>
                   <li class="page-item <?= ($data['current_page'] == $i) ? 'active' : ''; ?>">
-                     <a class="page-link" href="<?= BASEURL ;?>/petugas/pengaduan/<?= $i; ?>"> <?= $i; ?> </a>
+                     <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= $i; ?>"> <?= $i; ?> </a>
                   </li>
                <?php endfor; ?>
             <?php endif; ?>
 
             <!-- Tombol "Next" -->
             <li class="page-item <?= ($data['current_page'] >= $data['total_pages']) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="<?= BASEURL ;?>/petugas/pengaduan/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
+               <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
             </li>
 
          </ul>
