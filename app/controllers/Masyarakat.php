@@ -9,7 +9,7 @@ class Masyarakat extends Controller
 
       // Include data
       $this->view('templates/header', $data);
-      $this->view('templates/sidebar');
+      $this->view('templates/sidebar_masyarakat');
       $this->view('masyarakat/index', $data);
       $this->view('templates/footer');
    }
@@ -19,8 +19,8 @@ class Masyarakat extends Controller
       $data['judul'] = 'Home Masyarakat';
 
       $this->view('templates/header', $data);
-      $this->view('templates/sidebar');
-      $this->view('masyarakat/laporan');
+      $this->view('templates/sidebar_masyarakat');
+      $this->view('masyarakat/laporan', $data);
       $this->view('templates/footer');
    }
 }

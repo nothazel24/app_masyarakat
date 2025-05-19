@@ -47,7 +47,8 @@ class Petugas_model
       return $this->db->resultSet();
    }
 
-   public function tambahDataPetugas($data) {
+   public function tambahDataPetugas($data)
+   {
       $this->db->query('INSERT INTO ' . $this->table . ' (nama_petugas, username, password, telp, level) VALUES (:nama_petugas, :username, :password, :telp, :level)');
 
       $this->db->bind(':nama_petugas', $data['nama_petugas']);
@@ -60,5 +61,31 @@ class Petugas_model
 
       return $this->db->rowCount();
    }
-   
+
+   public function ubahDataPetugas($data)
+   {
+      if (!empty($data['password'])) {
+         $this->db->query('UPDATE ' . $this->table . ' 
+         SET nama_petugas = :nama_petugas, telp = :telp, level = :level, username = :username, password = :password 
+         WHERE id_petugas = :id_petugas');
+
+         $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT)); // hashing
+      } else {
+         $this->db->query('UPDATE ' . $this->table . ' 
+         SET nama_petugas = :nama_petugas, telp = :telp, level = :level,  username = :username 
+         WHERE id_petugas = :id_petugas');
+      }
+
+      // binding data
+      $this->db->bind(':nama_petugas', $data['petugas']);
+      $this->db->bind(':id_petugas', $data['id_petugas']);
+      $this->db->bind(':telp', $data['telp']);
+      $this->db->bind(':username', $data['username']);
+      $this->db->bind(':level', $data['level']);
+
+      $this->db->execute();
+
+      // JIKA BERHASIL DITAMBAHKAN AKAN MENGHASILKAN ANGKA 1
+      return $this->db->rowCount();
+   }
 }

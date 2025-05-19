@@ -203,18 +203,36 @@ class Petugas extends Controller
 
 
 
+
    // Edit Data
-   public function edit($nik)
+   public function editmasyarakat($nik)
    {
+      $result = $this->model('Masyarakat_model')->getMasyarakatByNik($nik);
+      $this->edit('Edit', 'edit', $result);
 
-      $data['judul'] = 'Edit Data';
-      $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatByNik($nik);
-
-      if (!$data['masyarakat']) {
+      if (!$result['masyarakat']) {
          Flasher::setFlash('gagal', 'ditemukan', 'danger');
          header('Location: ' . BASEURL . '/petugas/masyarakat');
          exit;
       }
+
+   }
+
+   public function editpetugas($id)
+   {
+      $result = $this->model('Petugas_model')->getPetugasById($id);
+
+      if (!$result['petugas']) {
+         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         header('Location: ' . BASEURL . '/petugas/petugas');
+         exit;
+      }
+   }
+
+   private function edit($judul, $dataTipe, $result)
+   {
+      $data['judul'] = $judul;
+      $data[$dataTipe] = $result;
 
       $this->view('templates/header', $data);
       $this->view('templates/sidebar');
@@ -222,10 +240,24 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }
 
+
+
    // execute ubah data
-   public function ubah()
+   public function ubahmasyarakat()
    {
       if ($this->model('Masyarakat_model')->ubahDataMasyarakat($_POST) > 0) {
+         Flasher::setFlash('berhasil', 'diubah', 'success');
+      } else {
+         Flasher::setFlash('gagal', 'diubah', 'danger');
+      }
+
+      header('Location: ' . BASEURL . '/petugas/masyarakat');
+      exit;
+   }
+
+   public function ubahpetugas()
+   {
+      if ($this->model('Petugas_model')->ubahDataPetugas($_POST) > 0) {
          Flasher::setFlash('berhasil', 'diubah', 'success');
       } else {
          Flasher::setFlash('gagal', 'diubah', 'danger');

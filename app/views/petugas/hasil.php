@@ -1,7 +1,7 @@
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
-      <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data Masyarakat</h1>
+      <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data <?= $data['judul']; ?></h1>
 
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
