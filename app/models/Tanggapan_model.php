@@ -11,7 +11,8 @@ class Tanggapan_model
       $this->db = new Database;
    }
 
-   public function tanggapan($id) {
+   public function tanggapan($id)
+   {
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_pengaduan = :id');
       $this->db->bind(':id', $id);
 
@@ -25,11 +26,13 @@ class Tanggapan_model
       $this->db->bind(':id', $id);
       $this->db->execute();
 
-      $this->db->query('INSERT INTO ' . $this->table . ' (id_tanggapan, tgl_tanggapan, tanggapan) VALUES (:id, NOW(), :tanggapan)');
-      $this->db->bind(':id', $id);
+      $this->db->query('INSERT INTO ' . $this->table . ' (id_pengaduan, tgl_tanggapan, tanggapan) VALUES (:id_pengaduan, NOW(), :tanggapan)'); // TAMBAH :id_petugas *apabila sudah di session
+      
+      $this->db->bind(':id_pengaduan', $id);
       $this->db->bind(':tanggapan', $tanggapan);
+      // BUAT NANTI
+     //  $this->db->bind(':id_petugas', $_SESSION['id_petugas']);
 
       return $this->db->execute();
    }
-
 }

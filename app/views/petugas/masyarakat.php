@@ -47,8 +47,7 @@
                            <a href="<?= BASEURL; ?>/petugas/editmasyarakat/<?= $msr['nik'];?>" class="text-primary mr-3 text-dark" style="text-decoration: none;" data-nik="<?= $msr['nik']?>">Edit</a>
 
                            <button class="btn btn-danger btn-sm">
-                              <a href="<?= BASEURL; ?>/petugas/hapus/<?= $msr['nik']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
-
+                              <a href="<?= BASEURL; ?>/petugas/hapusmasyarakat/<?= $msr['nik']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
                            </button>
                         </div>
                      </td>
@@ -69,7 +68,8 @@
             <!-- Tombol "Previous" -->
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
                <a class="page-link" href="<?= BASEURL; ?>/petugas/masyarakat/<?= max(1, $data['current_page'] - 1); ?>">
-                  <</a>
+                  <
+               </a>
             </li>
 
             <!-- Nomor halaman -->
@@ -83,7 +83,9 @@
 
             <!-- Tombol "Next" -->
             <li class="page-item <?= ($data['current_page'] >= $data['total_pages']) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="<?= BASEURL; ?>/petugas/masyarakat/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
+               <a class="page-link" href="<?= BASEURL; ?>/petugas/masyarakat/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">
+                  >
+               </a>
             </li>
 
          </ul>

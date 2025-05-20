@@ -78,7 +78,7 @@ class Masyarakat_model
       return $this->db->rowCount();
    }
 
-   // menghapus data
+   // MENGHAPUS DATA
    public function hapusDataMasyarakat($nik)
    {
       try {

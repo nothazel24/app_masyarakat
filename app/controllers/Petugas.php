@@ -122,7 +122,8 @@ class Petugas extends Controller
       $this->view('templates/footer');
    }  // END * BUG LAPORAN
 
-   // DETAIL BERDASARKAN ID
+
+   // DETAIL LAPORAN BERDASARKAN ID
    public function detail($id)
    {
 
@@ -144,9 +145,9 @@ class Petugas extends Controller
 
 
 
-   // MISC
+   // MISC *******
 
-   // CARI DATA BERDASARKAN * NIK DAN TANGGAL SIH..
+   // CARI DATA BERDASARKAN * NIK, USERNAME DAN TANGGAL SIH..
    public function carimasyarakat()
    {
       // VALIDASI DATA KEYWORD
@@ -154,7 +155,6 @@ class Petugas extends Controller
          header("Location:http://localhost/mvc/public/petugas/masyarakat");
          exit;
       } else {
-         // MENYIMPAN DATA KEDALAM VARIABEL
          $keyword = trim($_POST['keyword']);
          $result = $this->model('Masyarakat_model')->cariDataMasyarakat($keyword);
          $this->load('Masyarakat', 'masyarakat', $result);
@@ -168,7 +168,6 @@ class Petugas extends Controller
          header("Location:http://localhost/mvc/public/petugas/petugas");
          exit;
       } else {
-         // MENYIMPAN DATA KEDALAM VARIABEL
          $keyword = trim($_POST['keyword']);
          $result = $this->model('Petugas_model')->cariDataPetugas($keyword);
          $this->load('Petugas', 'petugas', $result);
@@ -182,7 +181,6 @@ class Petugas extends Controller
          header("Location:http://localhost/mvc/public/petugas/pengaduan");
          exit;
       } else {
-         // MENYIMPAN DATA KEDALAM VARIABEL
          $keyword = trim($_POST['keyword']);
          $result = $this->model('Pengaduan_model')->cariDataPengaduan($keyword);
          $this->load('Pengaduan', 'pengaduan', $result);
@@ -208,25 +206,27 @@ class Petugas extends Controller
    public function editmasyarakat($nik)
    {
       $result = $this->model('Masyarakat_model')->getMasyarakatByNik($nik);
-      $this->edit('Edit', 'edit', $result);
 
-      if (!$result['masyarakat']) {
+      if (!$result) {
          Flasher::setFlash('gagal', 'ditemukan', 'danger');
          header('Location: ' . BASEURL . '/petugas/masyarakat');
          exit;
       }
 
+      $this->edit('Masyarakat', 'masyarakat', $result);
    }
 
    public function editpetugas($id)
    {
       $result = $this->model('Petugas_model')->getPetugasById($id);
 
-      if (!$result['petugas']) {
+      if (!$result) {
          Flasher::setFlash('gagal', 'ditemukan', 'danger');
          header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
+
+      $this->edit('Petugas', 'petugas', $result);
    }
 
    private function edit($judul, $dataTipe, $result)
@@ -263,32 +263,51 @@ class Petugas extends Controller
          Flasher::setFlash('gagal', 'diubah', 'danger');
       }
 
-      header('Location: ' . BASEURL . '/petugas/masyarakat');
+      header('Location: ' . BASEURL . '/petugas/petugas');
       exit;
    }
 
+
    // Hapus data
-   public function hapus($nik)
+   public function hapusmasyarakat($nik)
    {
       $result = $this->model('Masyarakat_model')->hapusDataMasyarakat($nik);
 
-      // Validasi 
+      $this->hapus('masyarakat', $result, '/petugas/masyarakat');
+   }
+
+   public function hapuspetugas($id)
+   {
+      $result = $this->model('Petugas_model')->hapusDataPetugas($id);
+
+      $this->hapus('petugas', $result, '/petugas/petugas');
+   }
+
+   public function hapuspengaduan($id)
+   {
+      $result = $this->model('Pengaduan_model')->hapusDataPengaduan($id);
+
+      $this->hapus('pengaduan', $result, '/petugas/pengaduan');
+   }
+
+   private function hapus($dataTipe, $result, $redirectUrl)
+   {
+      $data[$dataTipe] = $result;
+
       if ($result === 'foreign_key_violation') {
          Flasher::setFlash('Gagal', 'dihapus, karena masih digunakan di tabel lain', 'danger');
-
-         // Jika data berhasil dihapus
       } elseif ($result > 0) {
          Flasher::setFlash('Berhasil', 'dihapus', 'success');
-
-         // Jika data gagal dihapus
       } else {
          Flasher::setFlash('Gagal', 'dihapus, data tidak ditemukan atau terjadi kesalahan lain', 'danger');
       }
 
-      header('Location: ' . BASEURL . '/petugas/masyarakat');
+      header('Location: ' . BASEURL . $redirectUrl);
       exit;
    }
 
+
+   // TANGGAPAN
    public function tanggapi()
    {
       if (!isset($_POST['submit'])) {
@@ -302,13 +321,13 @@ class Petugas extends Controller
 
       if (empty($status) || empty($tanggapan)) {
          Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
-         header('Location: ' . BASEURL . 'petugas/detail');
+         header('Location: ' . BASEURL . '/petugas/detail' . $id);
          exit;
       }
 
       $this->model('Tanggapan_model')->kirimTanggapan($id, $status, $tanggapan);
       Flasher::setFlash('Tanggapan berhasil dikirim', '', 'success');
-      header('Location: ' . BASEURL . '/petugas/detail/' . $id);
+      header('Location: ' . BASEURL . '/petugas/pengaduan');
       exit;
    }
 }

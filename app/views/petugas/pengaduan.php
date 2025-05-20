@@ -3,6 +3,12 @@
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data Pengaduan</h1>
 
+      <!-- Notifikasi -->
+      <div class="row px-3">
+         <div class="container-fluid">
+            <?php Flasher::flash(); ?>
+         </div>
+      </div>
 
       <div class="d-flex justify-content-end m-3">
          <form action="<?= BASEURL; ?>/petugas/caripengaduan/" method="post" class="form-inline" id="formCari">
@@ -50,7 +56,10 @@
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
                            <a href="<?= BASEURL; ?>/petugas/detail/<?= $laporan['id_pengaduan']; ?>" class="text-dark mr-3" style="text-decoration: none;" target="_self">Detail</a>
-                           <button class="btn btn-danger btn-sm">Hapus</button>
+
+                           <button class="btn btn-danger btn-sm">
+                              <a href="<?= BASEURL; ?>/petugas/hapuspengaduan/<?= $laporan['id_pengaduan']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
+                           </button>
                         </div>
                      </td>
 
@@ -72,7 +81,8 @@
             <!-- Tombol "Previous" -->
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
                <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= max(1, $data['current_page'] - 1); ?>">
-                  <</a>
+                  <
+               </a>
             </li>
 
             <!-- Nomor halaman -->
@@ -86,7 +96,9 @@
 
             <!-- Tombol "Next" -->
             <li class="page-item <?= ($data['current_page'] >= $data['total_pages']) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
+               <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">
+                  >
+               </a>
             </li>
 
          </ul>

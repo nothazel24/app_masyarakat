@@ -1,4 +1,4 @@
-<form action="<?= BASEURL; ?>/petugas/ubah" method="post">
+<form action="<?= BASEURL; ?>/petugas/ubahmasyarakat" method="post">
    <input type="hidden" name="nik" value="<?= $data['masyarakat']['nik']; ?>">
 
    <div class="container p-2">

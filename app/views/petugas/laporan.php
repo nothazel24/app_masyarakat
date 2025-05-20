@@ -3,12 +3,6 @@
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Generate Laporan</h1>
 
-      <div class="row px-3">
-         <div class="container-fluid">
-            <?php Flasher::flash(); ?>
-         </div>
-      </div>
-
       <!-- Data search -->
       <div class="rounded border border-black p-5 ml-4">
          <h2>Cari berdasarkan tanggal</h2>

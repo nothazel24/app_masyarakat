@@ -14,18 +14,6 @@ class Detail extends Controller
       $this->view('templates/footer');
    }
 
-   //  public function ubahData()
-   //  {
-
-   //      $data['judul'] = 'Detail';
-
-   //      // Include data
-   //      $this->view('templates/header', $data);
-   //      $this->view('templates/sidebar');
-   //      $this->view('detail/editData');
-   //      $this->view('templates/footer');
-   //  }
-
    public function tambahpetugas()
    {
 

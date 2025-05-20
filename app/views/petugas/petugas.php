@@ -3,6 +3,12 @@
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data Petugas</h1>
 
+      <!-- Notifikasi -->
+      <div class="row px-3">
+         <div class="container-fluid">
+            <?php Flasher::flash(); ?>
+         </div>
+      </div>
 
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
@@ -12,7 +18,7 @@
 
          <div class="d-flex justify-content-end">
             <form action="<?= BASEURL; ?>/petugas/caripetugas/" method="post" class="form-inline" id="formCari">
-               <input class="form-control mr-2" type="search" placeholder="Cari NIK" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
+               <input class="form-control mr-2" type="search" placeholder="Cari Username" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
                <button class="btn btn-outline-warning" type="submit" id="tombolCari" required />Cari</button>
             </form>
          </div>
@@ -44,8 +50,11 @@
                      <td style="text-transform: capitalize; "><?= $ptgs['level']; ?></td>
                      <td>
                         <div class="d-flex justify-content-start align-items-center">
-                           <a href="<?= BASEURL; ?>/petugas/edit/<?= $ptgs['id_petugas'];?>" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
-                           <button class="btn btn-danger btn-sm">Hapus</button>
+                           <a href="<?= BASEURL; ?>/petugas/editpetugas/<?= $ptgs['id_petugas']; ?>" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
+
+                           <button class="btn btn-danger btn-sm">
+                              <a href="<?= BASEURL; ?>/petugas/hapuspetugas/<?= $ptgs['id_petugas']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
+                           </button>
                         </div>
                      </td>
                   </tr>
@@ -65,7 +74,8 @@
             <!-- Tombol "Previous" -->
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
                <a class="page-link" href="<?= BASEURL; ?>/petugas/petugas/<?= max(1, $data['current_page'] - 1); ?>">
-                  <</a>
+                  <
+               </a>
             </li>
 
             <!-- Nomor halaman -->
@@ -79,7 +89,9 @@
 
             <!-- Tombol "Next" -->
             <li class="page-item <?= ($data['current_page'] >= $data['total_pages']) ? 'disabled' : ''; ?>">
-               <a class="page-link" href="<?= BASEURL; ?>/petugas/petugas/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">></a>
+               <a class="page-link" href="<?= BASEURL; ?>/petugas/petugas/<?= min($data['total_pages'], $data['current_page'] + 1); ?>">
+                  >
+               </a>
             </li>
 
          </ul>

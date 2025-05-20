@@ -69,4 +69,23 @@ class Pengaduan_model
       $this->db->bind(':keyword', "%$keyword%");
       return $this->db->resultSet();
    }
-}
+
+   // MENGHAPUS DATA
+   public function hapusDataPengaduan($id)
+   {
+      try {
+         $this->db->query('DELETE FROM ' . $this->table .  ' WHERE id_pengaduan = :id_pengaduan');
+
+         $this->db->bind(':id_pengaduan', $id);
+         $this->db->execute();
+         return $this->db->rowCount();
+      } catch (PDOException $e) {
+         if ($e->getCode() == '23000') {
+            return 'foreign_key_violation';
+         } else {
+            return false;
+         }
+      }
+   }
+
+} // CLOSING TAG

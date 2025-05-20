@@ -12,7 +12,7 @@
             <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
 
             <button class="btn btn-danger btn-sm">
-               <a href="<?= BASEURL; ?>/petugas/hapus/<?= $ptgs['id_petugas']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
+               <a href="<?= BASEURL; ?>/petugas/hapuspetugas/<?= $ptgs['id_petugas']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
             </button>
          </div>
       </td>

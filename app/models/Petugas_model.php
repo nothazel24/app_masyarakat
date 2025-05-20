@@ -33,8 +33,9 @@ class Petugas_model
    // Memilih data Petugas berdasarkan id
    public function getPetugasById($id)
    {
-      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
-      $this->db->bind('id', $id);
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_petugas = :id_petugas');
+
+      $this->db->bind(':id_petugas', $id);
       return $this->db->single();
    }
 
@@ -69,7 +70,7 @@ class Petugas_model
          SET nama_petugas = :nama_petugas, telp = :telp, level = :level, username = :username, password = :password 
          WHERE id_petugas = :id_petugas');
 
-         $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT)); // hashing
+         $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT));
       } else {
          $this->db->query('UPDATE ' . $this->table . ' 
          SET nama_petugas = :nama_petugas, telp = :telp, level = :level,  username = :username 
@@ -77,7 +78,7 @@ class Petugas_model
       }
 
       // binding data
-      $this->db->bind(':nama_petugas', $data['petugas']);
+      $this->db->bind(':nama_petugas', $data['nama_petugas']);
       $this->db->bind(':id_petugas', $data['id_petugas']);
       $this->db->bind(':telp', $data['telp']);
       $this->db->bind(':username', $data['username']);
@@ -85,7 +86,25 @@ class Petugas_model
 
       $this->db->execute();
 
-      // JIKA BERHASIL DITAMBAHKAN AKAN MENGHASILKAN ANGKA 1
       return $this->db->rowCount();
    }
-}
+
+   // MENGHAPUS DATA
+   public function hapusDataPetugas($id)
+   {
+      try {
+         $this->db->query('DELETE FROM ' . $this->table .  ' WHERE id_petugas = :id_petugas');
+         $this->db->bind(':id_petugas', $id);
+
+         $this->db->execute();
+         return $this->db->rowCount();
+      } catch (PDOException $e) {
+         if ($e->getCode() == '23000') {
+            return 'foreign_key_violation';
+         } else {
+            return false;
+         }
+      }
+   }
+
+} // CLOSING TAG
