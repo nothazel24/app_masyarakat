@@ -3,7 +3,8 @@
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Edit data <?= strtolower($data['judul']); ?></h1>
 
-      <a href="<?= BASEURL; ?>/petugas/<?= strtolower($data['judul']); ?>"><button class="btn rounded btn-success text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+      <a href="<?= BASEURL; ?>/petugas/<?= strtolower($data['judul']); ?>"><button class="btn rounded btn-warning text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+
       <div class="rounded border border-black p-5 ml-4">
          <h2>Edit data <?= strtolower($data['judul']); ?></h2>
          <hr>

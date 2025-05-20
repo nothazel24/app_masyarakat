@@ -22,7 +22,7 @@
                   <input type="date" class="form-control" name="tgl_akhir" id="tgl_akhir" required />
                </div>
 
-               <button class="container-fluid btn btn-warning text-white font-weight-bold mt-2" type="submit" name="submit">Cari</button>
+               <button class="container-fluid btn btn-success text-white font-weight-bold mt-2" type="submit" name="submit">Cari</button>
             </div>
          </form>
       </div>

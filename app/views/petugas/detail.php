@@ -10,6 +10,8 @@
          </div>
       </div>
 
+       <a href="<?= BASEURL; ?>/petugas/pengaduan"><button class="btn rounded btn-success text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+
       <!-- Detail Laporan -->
       <div class="rounded border border-black p-5 ml-4 mb-4">
          <h2>Detail Laporan</h2>

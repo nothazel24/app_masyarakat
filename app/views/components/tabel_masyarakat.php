@@ -9,7 +9,7 @@
        <td><?= $msr['telp']; ?></td>
        <td>
           <div class="d-flex justify-content-start align-items-center">
-             <a href="<?= BASEURL; ?>/detail/editData" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
+             <a href="<?= BASEURL; ?>/petugas/editmasyarakat/<?= $msr['nik'];?>" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
 
              <button class="btn btn-danger btn-sm">
                 <a href="<?= BASEURL; ?>/petugas/hapusmasyarakat/<?= $msr['nik']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
