@@ -10,8 +10,8 @@
             <img src="<?= BASEURL;?>/assets/img/profile.jpg" alt="pfp" class="pfp rounded-circle m-2" width="50" height="50">
 
             <div class="userDetail container-sm d-flex flex-column text-start mt-3 py-2">
-                <p class="font-weight-bold mb-0">User24432</p>
-                <p><em>Admin</em></p>
+                <p class="font-weight-bold mb-0"><?= $_SESSION['nama'];?></p>
+                <p><em><?= $_SESSION['status'] ?? 'User';?></em></p>
             </div> <!-- userDetail closing tag-->
         </div> <!-- userWrapper closing tag -->
 
@@ -29,7 +29,7 @@
     <br><br><br>
 
     <div class="mt-5">
-        <a href="#" target="_blank" style="text-decoration: none;"><b class="m-5 text-white">< Logout</b></a>
+        <a href="<?= BASEURL; ?>/login/logout" target="_self" style="text-decoration: none;"><b class="m-5 text-white">< Logout</b></a>
     </div>
 
 </aside> <!-- sidebar closing tag-->

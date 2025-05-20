@@ -4,13 +4,13 @@
         <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Beranda</h1>
 
         <!-- Laporan -->
-        <div class="py-5 ml-4">
+        <div class="p-5 ml-4 border rounded" style="background-color: #fefefe">
             <h2>Detail Akun anda</h2>
             <hr>
 
             <div class="d-flex flex-row align-items-center justify-content-around">
                 <div class="d-flex flex-column m-4">
-                    <img src="../assets/img/testingPFP.jpg" alt="pfp" class="rounded-circle mb-2" width="100">
+                    <img src="<?= BASEURL; ?>/assets/img/profile.jpg" alt="pfp" class="rounded-circle mb-2" width="100">
                     <p class="text-center font-weight-bold">User244432</p>
                 </div>
 

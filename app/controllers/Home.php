@@ -6,12 +6,9 @@ class Home extends Controller
     {
 
         $data['judul'] = 'Home';
-        $data['nama'] = $this->model('User_model')->getUser();
 
-        // menampilkan data yang diterima $data.
-        $this->view('templates/header', $data);
-
-        $this->view('home/index', $data);
+        $this->view('templates/header');
+        $this->view('home/index');
         $this->view('templates/footer');
     }
 }

@@ -39,6 +39,14 @@ class Petugas_model
       return $this->db->single();
    }
 
+   public function getByUsername($username)
+   {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username = :username');
+
+      $this->db->bind(':username', $username);
+      return $this->db->single();
+   }
+
    // SEARCH DATA PETUGAS
    public function cariDataPetugas($keyword)
    {
@@ -106,5 +114,4 @@ class Petugas_model
          }
       }
    }
-
 } // CLOSING TAG

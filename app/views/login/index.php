@@ -8,22 +8,24 @@
         </div>
 
         <div class="formLogin p-5 w-100">
-           <form action="" method="post" autocomplete="on">
+
+           <form action="<?= BASEURL; ?>/login/userlogin" method="post" autocomplete="on">
+
               <div class="form-group">
-                 <label for="emailInput">E-mail</label>
-                 <input type="email" class="form-control" id="emailInput" placeholder="example@mail.com" required />
+                 <label for="username">Username</label>
+                 <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" required />
               </div>
 
               <div class="form-group">
-                 <label for="passInput">Password</label>
-                 <input type="password" class="form-control" id="passInput" placeholder="**********" required />
+                 <label for="password">Password</label>
+                 <input type="password" class="form-control" id="password" name="password" placeholder="**********" required />
               </div>
 
               <div class="d-flex flex-row mt-4 mb-3 justify-content-between">
-                 <a href="registrasi.php" target="_blank" class="text-warning">
+                 <a href="<?= BASEURL; ?>/registrasi" target="_self" class="text-warning">
                     <p>Belum punya akun?</p>
                  </a>
-                 <a href="recov.php" target="_blank" class="text-white">
+                 <a href="#" target="_self" class="text-white">
                     <p>Lupa password</p>
                  </a>
               </div>
@@ -43,6 +45,12 @@
 
      <div class="img container-fluid">
         <img src="assets/img/side.png" alt="sideImage" class="sideImage" style="min-height: 100vh;">
+        <!-- Notifikasi -->
+        <div class="row px-3">
+           <div class="container-fluid">
+              <?php Flasher::flash(); ?>
+           </div>
+        </div>
      </div>
 
   </div>

@@ -4,6 +4,11 @@ class Petugas extends Controller
 {
    public function index()
    {
+      if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
 
       $data['judul'] = 'Dashboard';
       $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
@@ -24,6 +29,12 @@ class Petugas extends Controller
    // PAGINATION FOR ADMIN PAGE * Aduhh
    public function petugas($page = 1)
    {
+
+      if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
 
       // Pagination
       $data['limit'] = 4;
@@ -50,6 +61,12 @@ class Petugas extends Controller
 
    public function masyarakat($page = 1)
    {
+
+      if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
 
       // Pagination
       $data['limit'] = 4;
@@ -78,6 +95,12 @@ class Petugas extends Controller
    public function pengaduan($page = 1)
    {
 
+      if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
+
       // Pagination
       $data['limit'] = 4;
       $data['offset'] = ($page - 1) * $data['limit'];
@@ -104,6 +127,12 @@ class Petugas extends Controller
    public function laporan($tgl_awal = null, $tgl_akhir = null)
    {
 
+      if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
+         Flasher::setFlash('Anda bukan admin!', '', 'warning');
+         header('Location: ' . BASEURL . '/petugas');
+         exit;
+      }
+
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          $tgl_awal = $_POST['tgl_awal'];
          $tgl_akhir = $_POST['tgl_akhir'];
@@ -126,6 +155,12 @@ class Petugas extends Controller
    // DETAIL LAPORAN BERDASARKAN ID
    public function detail($id)
    {
+
+      if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
 
       $data['judul'] = 'Detail Data';
       $data['detail_laporan'] = $this->model('Pengaduan_model')->getLaporanById($id);
@@ -218,6 +253,12 @@ class Petugas extends Controller
 
    public function editpetugas($id)
    {
+      if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
+         Flasher::setFlash('Anda bukan Admin!', '', 'warning');
+         header('Location: ' . BASEURL . '/petugas');
+         exit;
+      }
+      
       $result = $this->model('Petugas_model')->getPetugasById($id);
 
       if (!$result) {
@@ -257,6 +298,12 @@ class Petugas extends Controller
 
    public function ubahpetugas()
    {
+      if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
+         Flasher::setFlash('Anda bukan Admin!', '', 'warning');
+         header('Location: ' . BASEURL . '/petugas');
+         exit;
+      }
+
       if ($this->model('Petugas_model')->ubahDataPetugas($_POST) > 0) {
          Flasher::setFlash('berhasil', 'diubah', 'success');
       } else {

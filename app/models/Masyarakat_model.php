@@ -39,6 +39,14 @@ class Masyarakat_model
       return $this->db->single();
    }
 
+   public function getByUsername($username)
+   {
+      $this->db->query('SELECT * FROM ' . $this->table . ' WHERE username = :username');
+
+      $this->db->bind(':username', $username);
+      return $this->db->single();
+   }
+
    // SEARCH FUNCTION
    public function cariDataMasyarakat($keyword)
    {
@@ -94,6 +102,20 @@ class Masyarakat_model
             return false;
          }
       }
+   }
+
+   public function tambahDataMasyarakat($data) {
+      $this->db->query('INSERT INTO ' . $this->table . ' (nama, username, password, telp, nik) VALUES (:nama, :username, :password, :telp, :nik)');
+
+      $this->db->bind(':nama', $data['nama']);
+      $this->db->bind(':username', $data['username']);
+      $this->db->bind(':password', $data['password']);
+      $this->db->bind(':telp', $data['telp']);
+      $this->db->bind(':nik', $data['nik']);
+
+      $this->db->execute();
+
+      return $this->db->rowCount();
    }
    
 } // Closing class tag

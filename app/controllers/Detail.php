@@ -4,6 +4,11 @@ class Detail extends Controller
 {
    public function detail()
    {
+      if (!isset($_SESSION['username'])) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
 
       $data['judul'] = 'Detail';
 
@@ -16,6 +21,11 @@ class Detail extends Controller
 
    public function tambahpetugas()
    {
+      if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
+         Flasher::setFlash('Anda Bukan Admin!', '', 'warning');
+         header('Location: ' . BASEURL . '/petugas');
+         exit;
+      }
 
       $data['judul'] = 'Tambah Petugas';
 
