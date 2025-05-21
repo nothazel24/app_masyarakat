@@ -104,6 +104,8 @@ class Masyarakat_model
       }
    }
 
+
+   // FUNCTION REGISTER AKUN
    public function tambahDataMasyarakat($data) {
       $this->db->query('INSERT INTO ' . $this->table . ' (nama, username, password, telp, nik) VALUES (:nama, :username, :password, :telp, :nik)');
 
@@ -116,6 +118,21 @@ class Masyarakat_model
       $this->db->execute();
 
       return $this->db->rowCount();
+   }
+
+   // MENGAMBIL SESI YANG AKTIF BERDASARKAN NIK
+   public function getMasyarakatBySession() {
+      if (!isset($_SESSION['nik'])) {
+         header('Location: ' . BASEURL . '/login');
+         Flasher::setFlash('Anda belum login!', '', 'danger');
+         exit;
+      }
+
+      $this->db->query('SELECT * FROM '  . $this->table . ' WHERE nik = :nik');
+      $this->db->bind(':nik', $_SESSION['nik']);
+
+      return $this->db->single();
+      
    }
    
 } // Closing class tag

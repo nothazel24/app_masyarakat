@@ -20,55 +20,71 @@ class Masyarakat extends Controller
    }
 
    // KIRIM PENGADUAN
-   // public function kirimlaporan()
-   // {
-   //    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   //       $nik = $_POST['nik'] ?? '';
-   //       $laporan = $_POST['laporan'] ?? '';
-   //       $tanggal = $_POST['tanggal'] ?? '';
-   //       $lokasi = $_POST['lokasi'] ?? '';
+   public function kirimlaporan()
+   {
 
-   //       // FILE UPLOAD MASS
-   //       $ktpName = $_FILES['bukti']['name'];
-   //       $ktpTmp = $_FILES['bukti']['tmp_name'];
-   //       $ktpPath = BASEURL . '/uploads/img/' . basename($ktpName);
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+         $nik = $_POST['nik'] ?? '';
+         $laporan = $_POST['isi_laporan'] ?? '';
+         $tanggal = $_POST['tgl_pengaduan'] ?? '';
+         // $lokasi = $_POST['lokasi'] ?? '';
 
-   //       if (move_uploaded_file($ktpTmp, $ktpPath)) {
-   //          if ($this->model('Pengaduan_model')->simpanlaporan([
-   //             'nik' => $nik,
-   //             'laporan' => $laporan,
-   //             'tanggal' => $tanggal,
-   //             'lokasi' => $lokasi,
-   //             'bukti' => $ktpPath,
-   //          ])) {
-   //             Flasher::setFlash('Laporan berhasil', 'dikirim!', 'success');
-   //          } else {
-   //             Flasher::setFlash('Laporan gagal', 'disimpan', 'danger');
-   //          }
-   //       } else {
-   //          Flasher::setFlash('Upload file', 'gagal', 'danger');
-   //       }
+         // FILE UPLOAD BUKTI.
+         $ktpName = uniqid('foto_', true) . '.' . pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION); // VALIDASI FILE TIPE .JPG/.PNG DAN ME-RENAME NYA AGAR TIDAK BENTROK
 
-   //       header('Location: ' . BASEURL . '/masyarakat/laporan');
-   //       exit;
+         $ktpTmp = $_FILES['foto']['tmp_name'];
 
-   //    } else {
-   //       $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatBySession();
-   //       $this->view('templates/header', $data);
-   //       $this->view('templates/sidebar_masyarakat');
-   //       $this->view('masyarakat/laporan', $data);
-   //       $this->view('templates/footer');
-   //    }
-   // }
+         // PATH PENYIMPANAN FILE BUKTI
+         $uploadDir = __DIR__ . '/../../public/uploads/img/';
+         $ktpPath = $uploadDir . $ktpName;
 
-   // public function laporan()
-   // {
-   //    $data['judul'] = 'Home Masyarakat';
-   //    $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatBySession();
+         // LOKASI URL UNTUK DISIMPAN KEDALAM DATABASE
+         $ktpPathUrl = BASEURL . '/uploads/img/' . $ktpName;
 
-   //    $this->view('templates/header', $data);
-   //    $this->view('templates/sidebar_masyarakat');
-   //    $this->view('masyarakat/laporan', $data);
-   //    $this->view('templates/footer');
-   // }
+         // echo '<pre>';
+         // print_r($nik);
+         // print_r($laporan);
+         // print_r($tanggal);
+         // print_r($ktpPathUrl);
+         // echo '</pre>';
+         // exit;
+
+         if (move_uploaded_file($ktpTmp, $ktpPath)) {
+            if ($this->model('Pengaduan_model')->simpanlaporan([
+               'nik' => $nik,
+               'isi_laporan' => $laporan,
+               'tgl_pengaduan' => $tanggal,
+               // 'lokasi' => $lokasi,
+               'foto' => $ktpPathUrl,
+               'status' => 'proses',
+            ])) {
+               Flasher::setFlash('Laporan berhasil', 'dikirim!', 'success');
+            } else {
+               Flasher::setFlash('Laporan gagal', 'disimpan', 'danger');
+            }
+         } else {
+            Flasher::setFlash('Upload file', 'gagal', 'danger');
+         }
+
+         header('Location: ' . BASEURL . '/masyarakat/laporan');
+         exit;
+      } else {
+         $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatBySession();
+         $this->view('templates/header', $data);
+         $this->view('templates/sidebar_masyarakat');
+         $this->view('masyarakat/laporan', $data);
+         $this->view('templates/footer');
+      }
+   }
+
+   public function laporan()
+   {
+      $data['judul'] = 'Laporan';
+      $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatBySession();
+
+      $this->view('templates/header', $data);
+      $this->view('templates/sidebar_masyarakat');
+      $this->view('masyarakat/laporan', $data);
+      $this->view('templates/footer');
+   }
 }

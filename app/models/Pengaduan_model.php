@@ -53,6 +53,8 @@ class Pengaduan_model
       return $this->db->resultSet();
    }
 
+
+   // FUNCTION PAGE LAPORAN (*DIUBAH JADI LAPORAN, BIAR GAK PUSING. HEHE)
    public function getLaporanById($id)
    {
       $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id_pengaduan=:id_pengaduan');
@@ -88,4 +90,19 @@ class Pengaduan_model
       }
    }
 
+   // SIMPAN LAPORAN MASYARAKAT KE DATABASE 
+   public function simpanlaporan($data)
+   {
+      $this->db->query('INSERT INTO ' . $this->table . ' (nik, isi_laporan, tgl_pengaduan, foto, status) VALUES (:nik, :isi_laporan, :tgl_pengaduan, :foto, :status)');
+
+      $this->db->bind(':nik', $data['nik']);
+      $this->db->bind(':isi_laporan', $data['isi_laporan']);
+      $this->db->bind(':tgl_pengaduan', $data['tgl_pengaduan']);
+      // $this->db->bind(':lokasi', $data['lokasi']);
+      $this->db->bind(':foto', $data['foto']);
+      $this->db->bind(':status', $data['status']);
+
+      $result = $this->db->execute();
+      return $result;
+   }
 } // CLOSING TAG
