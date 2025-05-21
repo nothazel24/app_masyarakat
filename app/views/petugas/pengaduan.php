@@ -48,9 +48,19 @@
                            <div class="bg-success text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
                               <?= $laporan['status']; ?>
                            </div>
+                           
+                        <?php elseif ($laporan['status'] === 'terverifikasi'): ?>
+                           <div class="bg-info text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
+                              <?= $laporan['status']; ?>
+                           </div>
+
+                        <?php elseif ($laporan['status'] === 'belum terverifikasi'): ?>
+                           <div class="bg-secondary text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
+                              <?= $laporan['status']; ?>
+                           </div>
 
                         <?php else : ?>
-                           <div class="text-center text-warning font-weight-bold">Error!</div>
+                           <div class="text-left text-danger font-weight-bold">Error!</div>
                         <?php endif; ?>
                      </td>
                      <td>
@@ -82,7 +92,7 @@
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
                <a class="page-link" href="<?= BASEURL; ?>/petugas/pengaduan/<?= max(1, $data['current_page'] - 1); ?>">
                   <
-               </a>
+                     </a>
             </li>
 
             <!-- Nomor halaman -->

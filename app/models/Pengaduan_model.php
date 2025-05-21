@@ -63,6 +63,28 @@ class Pengaduan_model
       return $this->db->single();
    }
 
+   // BUAT MENAMPILKAN HISTORY LAPORAN USER
+   public function getLaporanByNik($nik)
+   {
+      $this->db->query('SELECT id_pengaduan, tgl_pengaduan, isi_laporan, status FROM ' . $this->table . ' WHERE nik = :nik ORDER BY tgl_pengaduan DESC');
+
+      $this->db->bind(':nik', $nik);
+      return $this->db->resultSet();
+   }
+
+   // BUAT MENGHITUNG JUMLAH LAPORAN USER
+   public function getLaporanBySession($nik) {
+      $this->db->query("
+         SELECT SUM(status ='proses') AS proses, SUM(status ='proses') AS proses FROM pengaduan WHERE nik = :nik
+      ");
+
+      $this->db->bind(':nik', $nik);
+      return $this->db->single();
+   }
+
+
+   // MISC *******
+
    // SEARCH DATA PETUGAS
    public function cariDataPengaduan($keyword)
    {

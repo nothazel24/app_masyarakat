@@ -10,7 +10,13 @@ class Masyarakat extends Controller
          exit;
       }
 
-      $data['judul'] = 'Home Masyarakat';
+      $nik = $_SESSION['nik'];
+
+      $data['judul'] = 'Home';
+      $data['laporan'] = $this->model('Pengaduan_model')->getLaporanByNik($nik);
+
+      // MENYIMPAN SESSION AGAR BISA DIPAKAI DI VIEW
+      $_SESSION['laporan'] = $data['laporan'];
 
       // Include data
       $this->view('templates/header', $data);
@@ -56,7 +62,7 @@ class Masyarakat extends Controller
                'tgl_pengaduan' => $tanggal,
                // 'lokasi' => $lokasi,
                'foto' => $ktpPathUrl,
-               'status' => 'proses',
+               'status' => 'belum terverifikasi',
             ])) {
                Flasher::setFlash('Laporan berhasil', 'dikirim!', 'success');
             } else {
