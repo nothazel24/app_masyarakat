@@ -1,0 +1,13 @@
+{
+    "name": "vendor/project",
+    "description": "Project web pengaduan masyarakat kelompok 7",
+    "authors": [
+        {
+            "name": "nothazel24",
+            "email": "frdnryann@gmail.com"
+        }
+    ],
+    "require": {
+        "tecnickcom/tcpdf": "^6.9"
+    }
+}
