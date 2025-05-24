@@ -1,4 +1,4 @@
-<div class="d-flex flex-row">
+<div class="d-flex flex-row" style="background-color:rgb(250, 248, 248);">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Beranda</h1>
@@ -15,17 +15,17 @@
                <p class="text-center font-weight-bold"><?= $_SESSION['nama']; ?></p>
             </div>
 
-            <div class="d-flex flex-column px-4 py-3 rounded text-white" style="background-color:rgb(66, 162, 218);">
+            <div class="d-flex flex-column px-4 py-3 rounded text-white" style="background-color:rgb(95, 201, 211)">
                <p class="font-weight-bold text-left">Laporan Terverifikasi</p>
                <p class="font-weight-bold text-center"><?= $_SESSION['laporan_rekap']['terverifikasi']; ?></p>
             </div>
 
-            <div class="d-flex flex-column px-4 py-3 bg-warning rounded text-white">
+            <div class="d-flex flex-column px-4 py-3 rounded text-white" style="background-color:rgb(253, 232, 68)">
                <p class="font-weight-bold text-left">Laporan Diproses</p>
                <p class="font-weight-bold text-center"><?= $_SESSION['laporan_rekap']['proses']; ?></p>
             </div>
 
-            <div class="d-flex flex-column px-4 py-3 bg-success rounded text-white">
+            <div class="d-flex flex-column px-4 py-3  rounded text-white" style="background-color:rgb(158, 214, 62)">
                <p class="font-weight-bold text-left">Laporan Selesai</p>
                <p class="font-weight-bold text-center"><?= $_SESSION['laporan_rekap']['selesai']; ?></p>
             </div>

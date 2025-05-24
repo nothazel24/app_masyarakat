@@ -2,7 +2,7 @@
    <?php Flasher::flash(); ?>
 </div>
 
-<div class="d-flex flex-row">
+<div class="d-flex flex-row" style="height: 100vh; background-color:rgb(250, 248, 248);">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data Pengaduan</h1>
@@ -10,13 +10,13 @@
       <div class="d-flex justify-content-end m-3">
          <form action="<?= BASEURL; ?>/petugas/caripengaduan/" method="post" class="form-inline" id="formCari">
             <input class="form-control mr-2" type="date" placeholder="YYYY-MM-dd" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
-            <button class="btn btn-outline-warning" type="submit" id="tombolCari" required />Cari</button>
+            <button class="btn btn-outline-info" type="submit" id="tombolCari" required />Cari</button>
          </form>
       </div>
 
       <div class="tableUnit container-fluid table-responsive">
          <table class="table table-striped text-left">
-            <thead class="table-warning text-left p-5">
+            <thead class="text-left p-5">
                <tr>
                   <th>No.</th>
                   <th>Tanggal</th>

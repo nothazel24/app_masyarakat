@@ -1,25 +1,23 @@
-<div class="d-flex flex-row">
+<div class="container-fluid">
+   <?php Flasher::flash(); ?>
+</div>
+
+<div class="d-flex flex-row" style="height: 100vh; background-color:rgb(250, 248, 248);">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data Petugas</h1>
 
-      <!-- Notifikasi -->
-      <div class="row px-3">
-         <div class="container-fluid">
-            <?php Flasher::flash(); ?>
-         </div>
-      </div>
 
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
          <div>
-            <a href="<?= BASEURL; ?>/detail/tambahpetugas" target="_self" style="text-decoration: none;"><button class="btn btn-warning p-2 text-white font-weight-bold">+ Tambah petugas</button></a>
+            <a href="<?= BASEURL; ?>/detail/tambahpetugas" target="_self" style="text-decoration: none;"><button class="btn btn-success p-2 text-white font-weight-bold">+ Tambah petugas</button></a>
          </div>
 
          <div class="d-flex justify-content-end">
             <form action="<?= BASEURL; ?>/petugas/caripetugas/" method="post" class="form-inline" id="formCari">
                <input class="form-control mr-2" type="search" placeholder="Cari Username" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
-               <button class="btn btn-outline-warning" type="submit" id="tombolCari" required />Cari</button>
+               <button class="btn btn-outline-info" type="submit" id="tombolCari" required />Cari</button>
             </form>
          </div>
 
@@ -27,7 +25,7 @@
 
       <div class="tableUnit container-fluid table-responsive">
          <table class="table table-striped text-left">
-            <thead class="table-warning text-left p-5">
+            <thead class="text-left p-5">
                <tr>
                   <th>No.</th>
                   <th>Nama</th>
@@ -75,7 +73,7 @@
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
                <a class="page-link" href="<?= BASEURL; ?>/petugas/petugas/<?= max(1, $data['current_page'] - 1); ?>">
                   <
-               </a>
+                     </a>
             </li>
 
             <!-- Nomor halaman -->

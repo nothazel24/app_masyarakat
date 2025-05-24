@@ -1,4 +1,4 @@
-<div class="d-flex flex-row">
+<div class="d-flex flex-row" style="background-color:rgb(250, 248, 248); height: 100vh;">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data <?= $data['judul']; ?></h1>
@@ -6,14 +6,14 @@
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
          <div>
-            <a href="<?= BASEURL; ?>/petugas/<?= strtolower($data['judul']); ?>" target="_self" style="text-decoration: none;"><button class="btn btn-warning p-2 text-white font-weight-bold">Kembali</button></a>
+            <a href="<?= BASEURL; ?>/petugas/<?= strtolower($data['judul']); ?>" target="_self" style="text-decoration: none;"><button class="btn btn-info p-2 text-white font-weight-bold">Kembali</button></a>
          </div>
 
       </div>
 
       <div class="tableUnit container-fluid table-responsive" id="hasilData">
          <table class="table table-striped text-left">
-            <thead class="table-warning">
+            <thead>
                <tr>
                   <?php if (!empty($data['masyarakat'])) : ?>
                      <th>No.</th>
