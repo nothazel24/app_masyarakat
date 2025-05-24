@@ -1,16 +1,14 @@
+<div class="container-fluid">
+   <?php Flasher::flash(); ?>
+</div>
+
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Detail Laporan</h1>
 
-      <!-- Notifikasi -->
-      <div class="row px-3">
-         <div class="container-fluid">
-            <?php Flasher::flash(); ?>
-         </div>
-      </div>
 
-       <a href="<?= BASEURL; ?>/petugas/pengaduan"><button class="btn rounded btn-success text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+      <a href="<?= BASEURL; ?>/petugas/pengaduan"><button class="btn rounded btn-success text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
 
       <!-- Detail Laporan -->
       <div class="rounded border border-black p-5 ml-4 mb-4">
@@ -41,11 +39,20 @@
                <div class="content" style="width: 65%;">
                   <p><?= $data['detail_laporan']['tgl_pengaduan']; ?></p>
                   <p><?= $data['detail_laporan']['isi_laporan']; ?></p>
-                  <p><?= $data['detail_laporan']['foto']; ?></p>
+                  <p><a href="<?= $data['detail_laporan']['foto']; ?>" style="text-decoration: none;" class="font-weight-bold text-dark" target="_blank">Preview</a></p>
+
                   <?php if ($data['detail_laporan']['status'] === 'proses') : ?>
                      <p class="badge badge-warning text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
                   <?php elseif ($data['detail_laporan']['status'] === 'selesai') : ?>
                      <p class="badge badge-success text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
+                  <?php elseif ($data['detail_laporan']['status'] === 'belum terverifikasi') : ?>
+                     <p class="badge badge-secondary text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
+                  <?php elseif ($data['detail_laporan']['status'] === 'terverifikasi') : ?>
+                     <p class="badge badge-info text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
                   <?php else : ?>
                      <p class="badge badge-danger text-white p-2" style="text-transform: capitalize;">Error!</p>
                   <?php endif; ?>
@@ -67,12 +74,14 @@
             <div class="container">
                <form action="<?= BASEURL; ?>/petugas/tanggapi" method="post">
                   <input type="hidden" name="id_pengaduan" value="<?= $data['detail_laporan']['id_pengaduan']; ?>">
+                  <input type="hidden" name="id_petugas" value="<?= $_SESSION['id_petugas']; ?>">
 
                   <div class="form-group">
                      <label for="status">Status</label>
-                     <select name="status" id="status" class="form-control w-100" value="<?= $data['data_laporan']['status']; ?>" required>
-                        <option value="proses">Proses</option>
-                        <option value="selesai">Selesai</option>
+                     <select name="status" id="status" class="form-control w-100" required>
+                        <option value="proses" <?= $data['detail_laporan']['status'] === 'proses' ? 'selected' : ''; ?>>Proses</option>
+                        <option value="selesai" <?= $data['detail_laporan']['status'] === 'selesai' ? 'selected' : ''; ?>>Selesai</option>
+                        <option value="terverifikasi" <?= $data['detail_laporan']['status'] === 'terverifikasi' ? 'selected' : ''; ?>>Terverifikasi</option>
                      </select>
                   </div>
 

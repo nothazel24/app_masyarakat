@@ -7,7 +7,8 @@ class Home extends Controller
 
         $data['judul'] = 'Home';
 
-        $this->view('templates/header');
+        $this->view('templates/header', $data);
+        $this->view('templates/sidebar_home');
         $this->view('home/index');
         $this->view('templates/footer');
     }

@@ -15,8 +15,20 @@ class Masyarakat extends Controller
       $data['judul'] = 'Home';
       $data['laporan'] = $this->model('Pengaduan_model')->getLaporanByNik($nik);
 
+      $rekap = [
+         'terverifikasi' => 0,
+         'selesai' => 0,
+         'proses' => 0,
+      ];
+
+      foreach ($data['laporan'] as $laporan) {
+         if (isset($rekap[$laporan['status']])) {
+            $rekap[$laporan['status']]++;
+         }
+      }
+
       // MENYIMPAN SESSION AGAR BISA DIPAKAI DI VIEW
-      $_SESSION['laporan'] = $data['laporan'];
+      $_SESSION['laporan_rekap'] = $rekap;
 
       // Include data
       $this->view('templates/header', $data);

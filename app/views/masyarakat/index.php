@@ -4,29 +4,30 @@
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Beranda</h1>
 
       <!-- Laporan -->
-      <div class="p-5 ml-4 border rounded" style="background-color: #fefefe">
+      <div class="p-5 ml-4 border rounded" style="background-color:rgb(247, 247, 247)">
          <h2>Detail Akun anda</h2>
          <hr>
 
-         <div class="d-flex flex-row align-items-center justify-content-around">
-            <div class="d-flex flex-column m-4">
-               <img src="<?= BASEURL; ?>/assets/img/profile.jpg" alt="pfp" class="rounded-circle mb-2" width="100">
+         <div class="d-flex flex-row align-items-center justify-content-around ">
+
+            <div class="d-flex flex-column mx-2 my-3 align-items-center">
+               <img src="<?= BASEURL; ?>/assets/img/profile.jpg" alt="pfp" class="rounded-circle my-3" width="100">
                <p class="text-center font-weight-bold"><?= $_SESSION['nama']; ?></p>
             </div>
 
-            <div class="d-flex flex-column p-4">
+            <div class="d-flex flex-column px-4 py-3 rounded text-white" style="background-color:rgb(66, 162, 218);">
                <p class="font-weight-bold text-left">Laporan Terverifikasi</p>
-               <p class="font-weight-bold text-center"><?= $_SESSION['laporan']['terverifikasi'] ?? '0'; ?></p>
+               <p class="font-weight-bold text-center"><?= $_SESSION['laporan_rekap']['terverifikasi']; ?></p>
             </div>
 
-            <div class="d-flex flex-column p-4">
+            <div class="d-flex flex-column px-4 py-3 bg-warning rounded text-white">
                <p class="font-weight-bold text-left">Laporan Diproses</p>
-               <p class="font-weight-bold text-center"><?= $_SESSION['laporan']['proses'] ?? '0'; ?></p>
+               <p class="font-weight-bold text-center"><?= $_SESSION['laporan_rekap']['proses']; ?></p>
             </div>
 
-            <div class="d-flex flex-column p-4">
+            <div class="d-flex flex-column px-4 py-3 bg-success rounded text-white">
                <p class="font-weight-bold text-left">Laporan Selesai</p>
-               <p class="font-weight-bold text-center"><?= $_SESSION['laporan']['selesai'] ?? '0'; ?></p>
+               <p class="font-weight-bold text-center"><?= $_SESSION['laporan_rekap']['selesai']; ?></p>
             </div>
          </div> <!-- wrapper info akun -->
 
@@ -38,12 +39,13 @@
 
          <?php if (!empty($data['laporan'])) : ?>
             <div class="table-responsive">
-               <table class="table table-striped table-info text-left">
+               <table class="table table-striped text-left">
                   <thead class="font-weight-bold">
                      <tr>
-                        <td>Tanggal</td>
-                        <td>Isi laporan</td>
-                        <td>Detail</td>
+                        <th>Tanggal</th>
+                        <th>Isi laporan</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                      </tr>
                   </thead>
 
@@ -51,7 +53,7 @@
                      <?php foreach ($data['laporan'] as $laporan) : ?>
                         <tr>
                            <td><?= $laporan['tgl_pengaduan']; ?></td>
-                           <td><?= $laporan['isi_laporan']; ?></td>
+                           <td><?= substr($laporan['isi_laporan'], 0, 50); ?></td>
                            <td>
                               <?php if ($laporan['status'] === 'proses') : ?>
                                  <div class="bg-warning text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
@@ -76,6 +78,9 @@
                               <?php else : ?>
                                  <div class="text-left text-danger font-weight-bold">Error!</div>
                               <?php endif; ?>
+                           </td>
+                           <td>
+                              <a href="#" class="text-dark font-weight-bold" style="text-decoration: none;">Detail laporan</a>
                            </td>
                         </tr>
                      <?php endforeach; ?>

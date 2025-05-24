@@ -1,18 +1,15 @@
+<div class="container-fluid">
+   <?php Flasher::flash(); ?>
+</div>
+
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Data Pengaduan</h1>
 
-      <!-- Notifikasi -->
-      <div class="row px-3">
-         <div class="container-fluid">
-            <?php Flasher::flash(); ?>
-         </div>
-      </div>
-
       <div class="d-flex justify-content-end m-3">
          <form action="<?= BASEURL; ?>/petugas/caripengaduan/" method="post" class="form-inline" id="formCari">
-            <input class="form-control mr-2" type="search" placeholder="YYYY-MM-dd" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
+            <input class="form-control mr-2" type="date" placeholder="YYYY-MM-dd" name="keyword" id="keyword" autocomplete="off" aria-label="Search">
             <button class="btn btn-outline-warning" type="submit" id="tombolCari" required />Cari</button>
          </form>
       </div>
@@ -48,7 +45,7 @@
                            <div class="bg-success text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
                               <?= $laporan['status']; ?>
                            </div>
-                           
+
                         <?php elseif ($laporan['status'] === 'terverifikasi'): ?>
                            <div class="bg-info text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
                               <?= $laporan['status']; ?>

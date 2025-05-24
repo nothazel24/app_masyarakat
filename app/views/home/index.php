@@ -1,20 +1,21 @@
-<div class="container">
-    <div class="jumbotron d-flex flex-column mt-4">
-        <div class="container d-flex flex-row justify-content-around align-items-center justify-content-center">
-            <img src="<?= BASEURL; ?>/assets/img/profile.jpg" alt="pfp" class="rounded-circle shadow mr-4" width="200">
+<div class="d-flex flex-row">
 
-            <div class="d-flex flex-column">
-                <h1>Testing</h1>
-                <p class="text-wrap">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia distinctio delectus obcaecati magnam qui fugiat minima adipisci culpa architecto. Laborum numquam ipsam accusantium assumenda consequatur magnam rerum? Incidunt, qui veniam!</p>
-            </div>
+   <div class="container-fluid my-5 mx-5">
 
-            <hr class="vw-80 mx-auto">
+      <div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh">
+         <div class="text-center" style="width: 40rem;">
+            <h1 class="font-weight-bold" style="font-size: 5rem;">Lorem Ipsum Dolor sit amet</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A perspiciatis nemo, similique illo beatae cupiditate harum! Sequi labore itaque, illo eos dolorem suscipit delectus culpa voluptas pariatur aspernatur officiis soluta.</p>
+         </div>
+      </div>
 
-        </div>
+      <div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh">
+         <div class="text-center" style="width: 40rem;">
+            <h1 class="font-weight-bold" style="font-size: 5rem;">Lorem Ipsum Dolor sit amet</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. A perspiciatis nemo, similique illo beatae cupiditate harum! Sequi labore itaque, illo eos dolorem suscipit delectus culpa voluptas pariatur aspernatur officiis soluta.</p>
+         </div>
+      </div>
 
-        <div class="container p-2">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis doloremque odit quo, numquam, voluptatibus ab commodi illum quasi magnam libero asperiores eius dicta consequatur corporis dolores qui. Doloremque, sed quis.</p>
-        </div>
+   </div> <!-- container closing -->
 
-    </div>
 </div>

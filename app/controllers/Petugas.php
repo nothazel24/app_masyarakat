@@ -14,7 +14,7 @@ class Petugas extends Controller
       $data['total_petugas'] = $this->model('Petugas_model')->getTotalPetugas();
 
       // LAPORAN
-      $data['total_laporan'] = $this->model('Pengaduan_model')->getTotalPengaduan();
+      $data['jumlah_terverifikasi'] = $this->model('Pengaduan_model')->getStatus('terverifikasi');
       $data['jumlah_proses'] = $this->model('Pengaduan_model')->getStatus('proses');
       $data['jumlah_selesai'] = $this->model('Pengaduan_model')->getStatus('selesai');
 
@@ -149,7 +149,7 @@ class Petugas extends Controller
       $this->view('templates/sidebar');
       $this->view('petugas/laporan', $data);
       $this->view('templates/footer');
-   }  // END * BUG LAPORAN
+   }  // END 
 
 
    // DETAIL LAPORAN BERDASARKAN ID
@@ -187,7 +187,7 @@ class Petugas extends Controller
    {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
-         header("Location:http://localhost/mvc/public/petugas/masyarakat");
+         header('Location:' . BASEURL .  '/petugas/masyarakat');
          exit;
       } else {
          $keyword = trim($_POST['keyword']);
@@ -200,7 +200,7 @@ class Petugas extends Controller
    {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
-         header("Location:http://localhost/mvc/public/petugas/petugas");
+         header('Location:' . BASEURL .  '/petugas/petugas');
          exit;
       } else {
          $keyword = trim($_POST['keyword']);
@@ -213,7 +213,7 @@ class Petugas extends Controller
    {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
-         header("Location:http://localhost/mvc/public/petugas/pengaduan");
+         header('Location:' . BASEURL .  '/petugas/pengaduan');
          exit;
       } else {
          $keyword = trim($_POST['keyword']);

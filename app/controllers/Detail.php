@@ -4,7 +4,7 @@ class Detail extends Controller
 {
    public function detail()
    {
-      if (!isset($_SESSION['username'])) {
+      if (!isset($_SESSION['username']) || $_SESSION['level'] === 'admin' && $_SESSION['level'] === 'petugas') {
          Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
          header('Location: ' . BASEURL . '/login');
          exit;

@@ -21,7 +21,7 @@
          <div class="border border-black rounded m-3 text-center font-weight-bold" style="width: 12rem; height: fit-content;">
             <p>Laporan Terverifikasi</p>
             <hr class="dbLine">
-            <p><?= $data['total_laporan']; ?></p>
+            <p><?= $data['jumlah_terverifikasi']; ?></p>
          </div>
 
          <div class="border border-black rounded m-3 text-center font-weight-bold" style="width: 12rem; height: fit-content;">

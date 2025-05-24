@@ -1,6 +1,6 @@
 <div class="d-flex flex-row align-items-center" style="color: #fefefe;">
 
-   <div class="loginSection container-fluid d-flex flex-column justify-content-center align-items-center rounded p-4" style="background-color: #4e17eb; min-height: 100vh;">
+   <div class="loginSection container-fluid d-flex flex-column justify-content-center align-items-center rounded-right p-4" style="background-color: #4e17eb; min-height: 100vh;">
 
       <div class="container-fluid">
          <h1><strong>Registrasi</strong></h1>
@@ -47,8 +47,8 @@
 
 
 
-   <div class="img container-fluid">
-      <img src="assets/img/side.png" alt="sideImage" style="min-height: 100vh;">
+   <div class="img container-fluid" style="overflow: hidden;">
+      <img src="<?= BASEURL; ?>/assets/icons/regis_attr.svg" alt="sideImage" class="sideImage w-100" style="min-height: 100vh; z-index: -999;">
       </div>
    </div>
 

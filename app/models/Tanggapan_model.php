@@ -21,17 +21,26 @@ class Tanggapan_model
 
    public function kirimTanggapan($id, $status, $tanggapan)
    {
-      $this->db->query('UPDATE pengaduan SET status = :status WHERE id_pengaduan = :id');
+      $this->db->query('UPDATE pengaduan SET status = :status WHERE id_pengaduan = :id_pengaduan');
       $this->db->bind(':status', $status);
-      $this->db->bind(':id', $id);
+      $this->db->bind(':id_pengaduan', $id);
       $this->db->execute();
 
-      $this->db->query('INSERT INTO ' . $this->table . ' (id_pengaduan, tgl_tanggapan, tanggapan) VALUES (:id_pengaduan, NOW(), :tanggapan)'); // TAMBAH :id_petugas *apabila sudah di session
-      
+      // CEK TABEL TANGGAPAN
+      $this->db->query('SELECT COUNT(*) FROM ' . $this->table . ' WHERE id_pengaduan = :id_pengaduan');
+      $this->db->bind(':id_pengaduan', $id);
+      $count = $this->db->single();
+
+      // CHECK APAKAH TABEL SUDAH ADA?
+      if ($count > 0) {
+         $this->db->query('UPDATE ' . $this->table . ' SET tgl_tanggapan = NOW(), tanggapan = :tanggapan, id_petugas = :id_petugas WHERE id_pengaduan = :id_pengaduan');
+      } else {
+         $this->db->query('INSERT INTO ' . $this->table . ' (id_pengaduan, tgl_tanggapan, tanggapan, id_petugas) VALUES (:id_pengaduan, NOW(), :tanggapan, :id_petugas)');
+      }
+
       $this->db->bind(':id_pengaduan', $id);
       $this->db->bind(':tanggapan', $tanggapan);
-      // BUAT NANTI
-     //  $this->db->bind(':id_petugas', $_SESSION['id_petugas']);
+      $this->db->bind(':id_petugas', $_SESSION['id_petugas']);
 
       return $this->db->execute();
    }
