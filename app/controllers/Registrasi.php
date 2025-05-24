@@ -25,11 +25,11 @@ class Registrasi extends Controller
          ];
 
          if ($this->model('Masyarakat_model')->tambahDataMasyarakat($data)) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('Akun berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/login');
             exit;
          } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            Flasher::setFlash('NIK', 'Sudah dipakai!', 'danger');
             header('Location: ' . BASEURL . '/registrasi');
             exit;
          }

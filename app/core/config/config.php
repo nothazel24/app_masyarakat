@@ -1,7 +1,7 @@
 <?php 
 
 // NILAI UNTUK BASE URL 
-define('BASEURL', 'http://localhost/mvc/public');
+define('BASEURL', 'http://localhost/app_masyarakat/public');
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

@@ -1,4 +1,6 @@
-<div class="container-fluid d-flex flex-column justify-content-center align-content-center" style="min-height: 100vh; background-color:rgb(250, 248, 248);">
+<?php Flasher::flash(); ?>
+
+<div class="container-fluid d-flex flex-column justify-content-center align-content-center" style="min-height: 100vh;">
 
    <div class="text-center my-2">
       <h2 class="mb-1"><strong>E-Report</strong></h2>
@@ -38,4 +40,6 @@
       </form>
 
    </div> <!-- formLogin closing -->
+   <p class="font-weight-bold mx-auto text-info my-2">&copy; 2025 E-Report. All rights reserved.</p>
+
 </div>

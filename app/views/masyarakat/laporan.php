@@ -1,14 +1,10 @@
+<?php Flasher::flash(); ?>
+
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Laporan</h1>
 
-      <!-- Notifikasi -->
-      <div class="row px-2">
-         <div class="container-fluid">
-            <?php Flasher::flash(); ?>
-         </div>
-      </div>
 
       <!-- Laporan -->
       <div class="rounded border border-black p-5 ml-4">
@@ -39,7 +35,7 @@
 
                <div class="form-group">
                   <label for="foto">Pilih file <em class="text-muted">*KTP Pengguna</em></label>
-                  <input type="file" class="form-control" id="foto" name ="foto" required />
+                  <input type="file" class="form-control" id="foto" name="foto" required />
                </div>
 
                <button class="container-fluid btn btn-success text-white font-weight-bold mt-2" type="submit" name="submit">Kirim Laporan</button>

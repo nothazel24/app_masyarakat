@@ -38,8 +38,8 @@
          </ul>
 
          <!-- LOGOUT BUTTONS -->
-         <a href="<?= BASEURL; ?>/login/logout" target="_self" style="text-decoration: none;" class="mt-5 mx-2 d-flex flex-row justify-content-start align-items-center">
-            <img src="<?= BASEURL; ?>/assets/icons/logout.svg" width="28">
+         <a href="<?= BASEURL; ?>/login/logout" target="_self" style="text-decoration: none;" class="mt-5 mx-2 d-flex flex-row justify-content-start align-items-center" onclick="return confirm('Anda yakin ingin Logout?')">
+            <img src="<?= BASEURL; ?>/assets/icons/logout.svg" width="30" style="opacity: 75%;">
             <b class="text-dark mx-2">Logout</b>
          </a>
       </div>

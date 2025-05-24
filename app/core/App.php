@@ -4,7 +4,7 @@ class App
 {
     // untuk mengembalikan user ke controller default, apabila user salah mengisi controler dan methodnya
     // SINGKATNYA, INIT MEN-SET CONTROLLER, METHOD, DAN PARAMETER DEFAULT
-    protected $controller = 'Home';
+    protected $controller = 'Login';
     protected $method = 'index';
     protected $params = [];
 

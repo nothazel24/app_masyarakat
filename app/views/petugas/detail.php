@@ -1,6 +1,4 @@
-<div class="container-fluid">
-   <?php Flasher::flash(); ?>
-</div>
+<?php Flasher::flash(); ?>
 
 <div class="d-flex flex-row" style="background-color:rgb(250, 248, 248);">
 
