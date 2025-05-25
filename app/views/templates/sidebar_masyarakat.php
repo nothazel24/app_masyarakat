@@ -29,7 +29,7 @@
             </li>
 
             <li>
-               <a href="<?= BASEURL; ?>/masyarakat/laporan" class=" text-dark my-3 d-flex flex-row justify-content-start align-items-center mb-3" style="text-decoration: none; gap: 10%;">
+               <a href="<?= BASEURL; ?>/masyarakat/laporan" class="text-dark my-3 d-flex flex-row justify-content-start align-items-center mb-3" style="text-decoration: none; gap: 10%;">
                   <img src="<?= BASEURL; ?>/assets/icons/laporan_masyarakat.svg" width="30" style="opacity: 75%">
                   laporan
                </a>
