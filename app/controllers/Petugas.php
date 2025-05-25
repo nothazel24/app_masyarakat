@@ -366,7 +366,7 @@ class Petugas extends Controller
       $status = $_POST['status'];
       $tanggapan = $_POST['tanggapan'];
 
-      if (empty($status) || empty($tanggapan)) {
+      if (trim($status) === '' || trim($tanggapan) === '') {
          Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
          header('Location: ' . BASEURL . '/petugas/detail' . $id);
          exit;

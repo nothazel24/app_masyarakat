@@ -65,4 +65,31 @@ class Detail extends Controller
          $this->view('templates/footer');
       }
    }
+
+   public function laporan($id)
+   {
+
+      if (!isset($_SESSION['username'])) {
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         header('Location: ' . BASEURL . '/login');
+         exit;
+      }
+
+      $data['judul'] = 'Detail Data';
+      $data['detail_tanggapan'] = $this->model('Tanggapan_model')->getTanggapanById($id);
+      $data['detail_laporan'] = $this->model('Pengaduan_model')->getLaporanByid($id);
+
+      if (!$data['detail_laporan']) {
+         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         header('Location: ' . BASEURL . '/masyarakat');
+         exit;
+      }
+
+      $data['judul'] = 'Detail laporan';
+
+      $this->view('templates/header', $data);
+      $this->view('templates/sidebar_masyarakat');
+      $this->view('masyarakat/detail', $data);
+      $this->view('templates/footer');
+   }
 }

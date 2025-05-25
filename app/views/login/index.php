@@ -31,7 +31,7 @@
             <a href="<?= BASEURL; ?>/registrasi" target="_self" class="text-info">
                <p>Belum punya akun?</p>
             </a>
-            <a href="#" target="_self" class="text-dark">
+            <a href="mailto:e.report.office@gmail.com?subject=Permintaan ganti password" target="_self" class="text-dark">
                <p>Lupa password</p>
             </a>
          </div>

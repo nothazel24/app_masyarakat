@@ -6,7 +6,7 @@
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Detail Laporan</h1>
 
 
-      <a href="<?= BASEURL; ?>/petugas/pengaduan"><button class="btn rounded btn-success text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+      <a href="<?= BASEURL; ?>/petugas/pengaduan"><button class="btn rounded btn-info text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
 
       <!-- Detail Laporan -->
       <div class="rounded border border-black p-5 ml-4 mb-4" style="background-color: #fefefe;">

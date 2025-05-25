@@ -7,7 +7,7 @@
 
 
       <!-- Laporan -->
-      <div class="rounded border border-black p-5 ml-4">
+      <div class="rounded border border-black p-5 ml-4" style="background-color: #fefefe;">
          <h2>Formulir Laporan</h2>
          <hr>
 

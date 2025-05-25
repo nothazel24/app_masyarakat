@@ -3,11 +3,11 @@
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
-      <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Generate Laporan</h1>
+      <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Tambah Petugas</h1>
 
-      <a href="<?= BASEURL; ?>/petugas/petugas"><button class="btn rounded btn-success text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+      <a href="<?= BASEURL; ?>/petugas/petugas"><button class="btn rounded btn-info text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
 
-      <div class="rounded border border-black p-5 ml-4">
+      <div class="rounded border border-black p-5 ml-4" style="background-color: #fefefe;">
          <h2>Tambah petugas</h2>
          <hr>
 
@@ -49,7 +49,7 @@
 
                </div>
 
-               <button class="container-fluid btn btn-warning text-white font-weight-bold mt-4" type="submit" name="submit">Tambah Petugas</button>
+               <button class="container-fluid btn btn-success text-white font-weight-bold mt-4" type="submit" name="submit">Tambah Petugas</button>
 
             </div> <!-- form container section -->
          </form>

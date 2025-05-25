@@ -1,3 +1,5 @@
+<?php Flasher::flash(); ?>
+
 <div class="d-flex flex-row" style="background-color:rgb(250, 248, 248);">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
@@ -80,7 +82,7 @@
                               <?php endif; ?>
                            </td>
                            <td>
-                              <a href="#" class="text-dark font-weight-bold" style="text-decoration: none;">Detail laporan</a>
+                              <a href="<?= BASEURL; ?>/detail/laporan/<?= $laporan['id_pengaduan']; ?>" class="text-dark font-weight-bold" style="text-decoration: none;">Detail laporan</a>
                            </td>
                         </tr>
                      <?php endforeach; ?>

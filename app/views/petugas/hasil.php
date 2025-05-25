@@ -58,7 +58,7 @@
 
                <?php else : ?>
                   <div class="container-fluid bg-danger rounded p-3">
-                     <p class="text-white font-weight-bold">Data Keyword belum dimasukkan!</p>
+                     <p class="text-white font-weight-bold text-center">Data tidak dapat ditemukan!</p>
                   </div>
 
                <?php endif; ?>
