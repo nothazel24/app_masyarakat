@@ -59,13 +59,11 @@ class Masyarakat extends Controller
          // LOKASI URL UNTUK DISIMPAN KEDALAM DATABASE
          $ktpPathUrl = BASEURL . '/uploads/img/' . $ktpName;
 
-         // echo '<pre>';
-         // print_r($nik);
-         // print_r($laporan);
-         // print_r($tanggal);
-         // print_r($ktpPathUrl);
-         // echo '</pre>';
-         // exit;
+         if (trim($_POST['nik']) === '' || trim($_POST['isi_laporan']) === '' || trim($_POST['tgl_pengaduan']) === '' || trim($_FILES['foto']) === '') {
+            Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+            header('Location: ' . BASEURL . '/masyarakat/laporan');
+            exit;
+         }
 
          if (move_uploaded_file($ktpTmp, $ktpPath)) {
             if ($this->model('Pengaduan_model')->simpanlaporan([

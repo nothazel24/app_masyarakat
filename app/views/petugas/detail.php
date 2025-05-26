@@ -13,49 +13,54 @@
          <h2>Detail Laporan</h2>
          <hr>
 
-         <div class="d-flex flex-column justify-content-start">
-            <div class="d-flex flex-row justify-content-between">
-               <div style="width: 30%;">
-                  <div class="d-flex justify-content-between">
-                     <p class="font-weight-bold">Tanggal Laporan</p>
-                     <p>:</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                     <p class="font-weight-bold">Isi Laporan</p>
-                     <p>:</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                     <p class="font-weight-bold">Bukti Laporan</p>
-                     <p>:</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                     <p class="font-weight-bold">Status Laporan</p>
-                     <p>:</p>
-                  </div>
+         <div class="d-flex flex-column">
+
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Tanggal laporan</p>
+                  <p>:</p>
                </div>
-
-               <div class="content" style="width: 65%;">
-                  <p><?= $data['detail_laporan']['tgl_pengaduan']; ?></p>
-                  <p><?= $data['detail_laporan']['isi_laporan']; ?></p>
-                  <p><a href="<?= $data['detail_laporan']['foto']; ?>" style="text-decoration: none;" class="font-weight-bold text-dark" target="_blank">Preview</a></p>
-
-                  <?php if ($data['detail_laporan']['status'] === 'proses') : ?>
-                     <p class="badge badge-warning text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
-
-                  <?php elseif ($data['detail_laporan']['status'] === 'selesai') : ?>
-                     <p class="badge badge-success text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
-
-                  <?php elseif ($data['detail_laporan']['status'] === 'belum terverifikasi') : ?>
-                     <p class="badge badge-secondary text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
-
-                  <?php elseif ($data['detail_laporan']['status'] === 'terverifikasi') : ?>
-                     <p class="badge badge-info text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
-
-                  <?php else : ?>
-                     <p class="badge badge-danger text-white p-2" style="text-transform: capitalize;">Error!</p>
-                  <?php endif; ?>
-               </div>
+               <p><?= $data['detail_laporan']['tgl_pengaduan'] ?? '-'; ?></p>
             </div>
+
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Isi laporan</p>
+                  <p>:</p>
+               </div>
+               <p class="text-justify" style="width: 75%;"><?= $data['detail_laporan']['isi_laporan']; ?></p>
+            </div>
+
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Foto</p>
+                  <p>:</p>
+               </div>
+               <p><a href="<?= $data['detail_laporan']['foto']; ?>" style="text-decoration: none;" class="font-weight-bold text-info" target="_blank">Preview</a></p>
+            </div>
+
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Status</p>
+                  <p>:</p>
+               </div>
+               <?php if ($data['detail_laporan']['status'] === 'proses') : ?>
+                  <p class="badge badge-warning text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
+               <?php elseif ($data['detail_laporan']['status'] === 'selesai') : ?>
+                  <p class="badge badge-success text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
+               <?php elseif ($data['detail_laporan']['status'] === 'belum terverifikasi') : ?>
+                  <p class="badge badge-secondary text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
+               <?php elseif ($data['detail_laporan']['status'] === 'terverifikasi') : ?>
+                  <p class="badge badge-info text-white p-2" style="text-transform: capitalize;"><?= $data['detail_laporan']['status']; ?></p>
+
+               <?php else : ?>
+                  <p class="badge badge-danger text-white p-2" style="text-transform: capitalize;">Error!</p>
+               <?php endif; ?>
+            </div>
+
          </div>
       </div>
 

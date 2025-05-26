@@ -3,11 +3,13 @@
 <div class="container-fluid d-flex flex-column justify-content-center align-content-center" style="min-height: 100vh;">
 
    <div class="text-center my-2">
-      <h2 class="mb-1"><strong>E-Report</strong></h2>
+      <h2 class="mb-1"><strong>Login</strong></h2>
       <p>Silahkan masukkan detail akun anda!</p>
    </div>
 
    <div class="p-5 w-50 mx-auto rounded shadow" style="background-color:rgb(255, 255, 255);">
+
+      <h3 class="pb-1"><strong>E-Report</strong></h3>
 
       <form action="<?= BASEURL; ?>/login/userlogin" method="post" autocomplete="on">
 
@@ -40,6 +42,6 @@
       </form>
 
    </div> <!-- formLogin closing -->
-   <p class="font-weight-bold mx-auto text-info my-2">&copy; 2025 E-Report. All rights reserved.</p>
+   <p class="font-weight-bold mx-auto text-info my-3">&copy; 2025 E-Report. All rights reserved.</p>
 
 </div>

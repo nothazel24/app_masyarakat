@@ -23,7 +23,7 @@ class Detail extends Controller
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
          Flasher::setFlash('Anda Bukan Admin!', '', 'warning');
-         header('Location: ' . BASEURL . '/petugas');
+         header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
 
@@ -46,6 +46,12 @@ class Detail extends Controller
             'telp' => $_POST['telp'],
             'level' => $_POST['level']
          ];
+
+         if (trim($_POST['username']) === '' || trim($_POST['password']) === '' || trim($_POST['nama_petugas']) === '' || trim($_POST['telp']) === '' || trim($_POST['level']) === '') {
+            Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+            header('Location: ' . BASEURL . '/detail/tambahpetugas');
+            exit;
+         }
 
          if ($this->model('Petugas_model')->tambahDataPetugas($data)) {
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');

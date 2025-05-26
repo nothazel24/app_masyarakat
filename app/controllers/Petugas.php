@@ -325,6 +325,12 @@ class Petugas extends Controller
 
    public function hapuspetugas($id)
    {
+      if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
+         Flasher::setFlash('Anda bukan Admin!', '', 'warning');
+         header('Location: ' . BASEURL . '/petugas/petugas');
+         exit;
+      }
+
       $result = $this->model('Petugas_model')->hapusDataPetugas($id);
 
       $this->hapus('petugas', $result, '/petugas/petugas');
@@ -346,7 +352,7 @@ class Petugas extends Controller
       } elseif ($result > 0) {
          Flasher::setFlash('Berhasil', 'dihapus', 'success');
       } else {
-         Flasher::setFlash('Gagal', 'dihapus, data tidak ditemukan atau terjadi kesalahan lain', 'danger');
+         Flasher::setFlash('Gagal', 'dihapus, data tidak ditemukan atau data masih dipakai di tabel lain', 'danger');
       }
 
       header('Location: ' . BASEURL . $redirectUrl);

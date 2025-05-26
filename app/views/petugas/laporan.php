@@ -43,7 +43,7 @@
                <div class="table-responsive">
                   <div class="container">
                      <table class="table table-striped text-left">
-                        <thead class="table-warning">
+                        <thead>
                            <tr class="font-weight-bold">
                               <td>No.</td>
                               <td>Tanggal</td>

@@ -32,7 +32,7 @@
 
                      <td><?= $no++; ?></td>
                      <td><?= $laporan['tgl_pengaduan']; ?></td>
-                     <td><?= $laporan['isi_laporan']; ?></td>
+                     <td><?= substr($laporan['isi_laporan'], 0, 30); ?></td>
                      <td>
                         <?php if ($laporan['status'] === 'proses') : ?>
                            <div class="bg-warning text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">

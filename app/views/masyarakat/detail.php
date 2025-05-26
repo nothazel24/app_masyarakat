@@ -4,7 +4,7 @@
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Detail Laporan</h1>
 
 
-      <a href="<?= BASEURL; ?>/masyarakat"><button class="btn rounded btn-info text-white font-weight-bold p-2 mb-3 mt-3 ml-4" style="width: 10%;">Kembali</button></a>
+      <a href="<?= BASEURL; ?>/masyarakat"><button class="btn rounded btn-info text-white font-weight-bold p-2 my-3 ml-4" style="width: 10%;">Kembali</button></a>
 
       <!-- Detail Laporan -->
       <div class="rounded border border-black p-5 ml-4 mb-4" style="background-color: #fefefe;">
@@ -13,18 +13,27 @@
 
          <div class="d-flex flex-column">
 
-            <div class="d-flex flex-row justify-content-between">
-               <p>Tanggal ditanggapi :</p>
-               <p><?= $data['detail_tanggapan']['tgl_tanggapan']; ?></p>
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Tanggal ditanggapi</p>
+                  <p>:</p>
+               </div>
+               <p><?= $data['detail_tanggapan']['tgl_tanggapan'] ?? '-'; ?></p>
             </div>
 
-            <div class="d-flex flex-row justify-content-between">
-               <p>Tanggapan petugas :</p>
-               <p><?= $data['detail_tanggapan']['tanggapan']; ?></p>
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Tanggapan petugas</p>
+                  <p>:</p>
+               </div>
+               <p><?= $data['detail_tanggapan']['tanggapan'] ?? '-'; ?></p>
             </div>
 
-            <div class="d-flex flex-row justify-content-between">
-               <p>Status :</p>
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Status</p>
+                  <p>:</p>
+               </div>
                <?php if ($data['detail_laporan']['status'] === 'proses') : ?>
                   <div class="text-success font-weight-bold text-capitalize">
                      <?= $data['detail_laporan']['status']; ?>
@@ -52,14 +61,28 @@
                <?php endif; ?>
             </div>
 
-            <div class="d-flex flex-row justify-content-between">
-               <p>Tanggal laporan dibuat :</p>
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Tanggal dibuat</p>
+                  <p>:</p>
+               </div>
                <p><?= $data['detail_laporan']['tgl_pengaduan']; ?></p>
             </div>
 
-            <div class="d-flex flex-row justify-content-between">
-               <p>Isi laporan :</p>
-               <p><?= $data['detail_laporan']['isi_laporan']; ?></p>
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Isi laporan</p>
+                  <p>:</p>
+               </div>
+               <p class="text-justify" style="width: 75%;"><?= $data['detail_laporan']['isi_laporan']; ?></p>
+            </div>
+
+            <div class="d-flex flex-row">
+               <div class="d-flex mr-4 justify-content-between" style="width: 20%;">
+                  <p class="text-nowrap">Foto</p>
+                  <p>:</p>
+               </div>
+               <p><a href="<?= $data['detail_laporan']['foto']; ?>" target="_blank" class="font-weight-bold text-info" style="text-decoration: none;">Preview</a></p>
             </div>
 
          </div>

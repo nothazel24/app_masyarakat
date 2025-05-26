@@ -24,6 +24,12 @@ class Registrasi extends Controller
             'nik' => $_POST['nik']
          ];
 
+         if (trim($_POST['username']) === '' || trim($_POST['password']) === '' || trim($_POST['nama']) === '' || trim($_POST['telp']) === '' || trim($_POST['nik']) === '') {
+            Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+            header('Location: ' . BASEURL . '/registrasi');
+            exit;
+         }
+
          if ($this->model('Masyarakat_model')->tambahDataMasyarakat($data)) {
             Flasher::setFlash('Akun berhasil', 'ditambahkan', 'success');
             header('Location: ' . BASEURL . '/login');
@@ -35,5 +41,4 @@ class Registrasi extends Controller
          }
       }
    }
-
 }

@@ -65,7 +65,7 @@
             <li class="page-item <?= ($data['current_page'] <= 1) ? 'disabled' : ''; ?>">
                <a class="page-link" href="<?= BASEURL; ?>/petugas/masyarakat/<?= max(1, $data['current_page'] - 1); ?>">
                   <
-                     </a>
+               </a>
             </li>
 
             <!-- Nomor halaman -->
