@@ -82,9 +82,17 @@
                   <div class="form-group">
                      <label for="status">Status</label>
                      <select name="status" id="status" class="form-control w-100" required>
-                        <option value="proses" <?= $data['detail_laporan']['status'] === 'proses' ? 'selected' : ''; ?>>Proses</option>
-                        <option value="selesai" <?= $data['detail_laporan']['status'] === 'selesai' ? 'selected' : ''; ?>>Selesai</option>
-                        <option value="terverifikasi" <?= $data['detail_laporan']['status'] === 'terverifikasi' ? 'selected' : ''; ?>>Terverifikasi</option>
+                        <option value="proses" <?= $data['detail_laporan']['status'] === 'proses' ? 'selected' : ''; ?>>
+                           Proses
+                        </option>
+                        
+                        <option value="selesai" <?= $data['detail_laporan']['status'] === 'selesai' ? 'selected' : ''; ?>>
+                           Selesai
+                        </option>
+
+                        <option value="terverifikasi" <?= $data['detail_laporan']['status'] === 'terverifikasi' ? 'selected' : ''; ?>>
+                           Terverifikasi
+                        </option>
                      </select>
                   </div>
 

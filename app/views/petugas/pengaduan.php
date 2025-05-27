@@ -55,7 +55,7 @@
                            </div>
 
                         <?php else : ?>
-                           <div class="text-left text-danger font-weight-bold">Error!</div>
+                           <div class="text-left text-danger font-weight-bold">Undefined</div>
                         <?php endif; ?>
                      </td>
                      <td>

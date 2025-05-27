@@ -255,7 +255,7 @@ class Petugas extends Controller
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
          Flasher::setFlash('Anda bukan Admin!', '', 'warning');
-         header('Location: ' . BASEURL . '/petugas');
+         header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
       
@@ -374,7 +374,7 @@ class Petugas extends Controller
 
       if (trim($status) === '' || trim($tanggapan) === '') {
          Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
-         header('Location: ' . BASEURL . '/petugas/detail' . $id);
+         header('Location: ' . BASEURL . '/petugas/detail/' . $id);
          exit;
       }
 

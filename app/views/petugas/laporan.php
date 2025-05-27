@@ -68,6 +68,17 @@
                                        <div class="bg-success p-2 m-2 rounded font-weight-bold text-white w-50 text-capitalize">
                                           <?= $laporan['status']; ?>
                                        </div>
+
+                                    <?php elseif ($laporan['status'] === 'terverifikasi'): ?>
+                                       <div class="bg-info text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
+                                          <?= $laporan['status']; ?>
+                                       </div>
+
+                                    <?php elseif ($laporan['status'] === 'belum terverifikasi'): ?>
+                                       <div class="bg-secondary text-center p-2 text-white font-weight-bold rounded" style="width: fit-content; font-size: 13px; text-transform: capitalize;">
+                                          <?= $laporan['status']; ?>
+                                       </div>
+                                       
                                     <?php else : ?>
                                        <div class="bg-danger p-2 rounded font-weight-bold text-white w-50 text-capitalize">
                                           Undefined
