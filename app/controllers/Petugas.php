@@ -5,7 +5,7 @@ class Petugas extends Controller
    public function index()
    {
       if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -31,7 +31,7 @@ class Petugas extends Controller
    {
 
       if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -63,7 +63,7 @@ class Petugas extends Controller
    {
 
       if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -96,7 +96,7 @@ class Petugas extends Controller
    {
 
       if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -128,7 +128,7 @@ class Petugas extends Controller
    {
 
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
-         Flasher::setFlash('Anda bukan admin!', '', 'warning');
+         Flasher::setFlash('Anda bukan admin!', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas');
          exit;
       }
@@ -157,7 +157,7 @@ class Petugas extends Controller
    {
 
       if (!isset($_SESSION['username']) || ($_SESSION['level'] !== 'petugas' && $_SESSION['level'] !== 'admin')) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -167,7 +167,7 @@ class Petugas extends Controller
       $data['tanggapan'] = $this->model('Tanggapan_model')->tanggapan($id);
 
       if (!$data['detail_laporan']) {
-         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         Flasher::setFlash('Data gagal', 'ditemukan', 'danger', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/laporan');
          exit;
       }
@@ -243,7 +243,7 @@ class Petugas extends Controller
       $result = $this->model('Masyarakat_model')->getMasyarakatByNik($nik);
 
       if (!$result) {
-         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         Flasher::setFlash('Data gagal', 'ditemukan', 'danger', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/masyarakat');
          exit;
       }
@@ -254,7 +254,7 @@ class Petugas extends Controller
    public function editpetugas($id)
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
-         Flasher::setFlash('Anda bukan Admin!', '', 'warning');
+         Flasher::setFlash('Anda bukan Admin!', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
@@ -262,7 +262,7 @@ class Petugas extends Controller
       $result = $this->model('Petugas_model')->getPetugasById($id);
 
       if (!$result) {
-         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         Flasher::setFlash('Data gagal', 'ditemukan', 'danger', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
@@ -287,9 +287,9 @@ class Petugas extends Controller
    public function ubahmasyarakat()
    {
       if ($this->model('Masyarakat_model')->ubahDataMasyarakat($_POST) > 0) {
-         Flasher::setFlash('berhasil', 'diubah', 'success');
+         Flasher::setFlash('Data berhasil', 'diubah', 'success', 'notifikasi');
       } else {
-         Flasher::setFlash('gagal', 'diubah', 'danger');
+         Flasher::setFlash('Data gagal', 'diubah', 'danger', 'notifikasi');
       }
 
       header('Location: ' . BASEURL . '/petugas/masyarakat');
@@ -299,15 +299,15 @@ class Petugas extends Controller
    public function ubahpetugas()
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
-         Flasher::setFlash('Anda bukan Admin!', '', 'warning');
+         Flasher::setFlash('Anda bukan Admin!', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas');
          exit;
       }
 
       if ($this->model('Petugas_model')->ubahDataPetugas($_POST) > 0) {
-         Flasher::setFlash('berhasil', 'diubah', 'success');
+         Flasher::setFlash('Data berhasil', 'diubah', 'success', 'notifikasi');
       } else {
-         Flasher::setFlash('gagal', 'diubah', 'danger');
+         Flasher::setFlash('Data gagal', 'diubah', 'danger', 'notifikasi');
       }
 
       header('Location: ' . BASEURL . '/petugas/petugas');
@@ -326,7 +326,7 @@ class Petugas extends Controller
    public function hapuspetugas($id)
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
-         Flasher::setFlash('Anda bukan Admin!', '', 'warning');
+         Flasher::setFlash('Anda bukan Admin!', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
@@ -348,11 +348,11 @@ class Petugas extends Controller
       $data[$dataTipe] = $result;
 
       if ($result === 'foreign_key_violation') {
-         Flasher::setFlash('Gagal', 'dihapus, karena masih digunakan di tabel lain', 'danger');
+         Flasher::setFlash('Data gagal', 'dihapus, karena masih digunakan di tabel lain', 'danger', 'notifikasi');
       } elseif ($result > 0) {
-         Flasher::setFlash('Berhasil', 'dihapus', 'success');
+         Flasher::setFlash('Data berhasil', 'dihapus', 'success', 'notifikasi');
       } else {
-         Flasher::setFlash('Gagal', 'dihapus, data tidak ditemukan atau data masih dipakai di tabel lain', 'danger');
+         Flasher::setFlash('Data gagal', 'dihapus, data tidak ditemukan atau data masih dipakai di tabel lain', 'danger', 'notifikasi');
       }
 
       header('Location: ' . BASEURL . $redirectUrl);
@@ -373,13 +373,13 @@ class Petugas extends Controller
       $tanggapan = $_POST['tanggapan'];
 
       if (trim($status) === '' || trim($tanggapan) === '') {
-         Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+         Flasher::setFlash('Semua field wajib diisi!', '', 'danger', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/detail/' . $id);
          exit;
       }
 
       $this->model('Tanggapan_model')->kirimTanggapan($id, $status, $tanggapan);
-      Flasher::setFlash('Tanggapan berhasil dikirim', '', 'success');
+      Flasher::setFlash('Tanggapan berhasil dikirim', '', 'success', 'notifikasi');
       header('Location: ' . BASEURL . '/petugas/pengaduan');
       exit;
    }

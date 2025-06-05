@@ -58,14 +58,14 @@ class Login extends Controller
                   header('Location: ' . BASEURL . '/petugas');
                   break;
                default:
-                  Flasher::setFlash('Login gagal', 'Level tidak dikenali', 'danger');
+                  Flasher::setFlash('Login gagal', 'Level tidak dikenali', 'danger', 'notifikasi');
                   header('Location: ' . BASEURL . '/login');
                   break;
             }
 
             exit;
          } else {
-            Flasher::setFlash('Login gagal', 'Username atau Password salah!', 'danger');
+            Flasher::setFlash('Login gagal', 'Username atau Password salah!', 'danger', 'notifikasi');
             header('Location: ' . BASEURL . '/login');
             exit;
          }

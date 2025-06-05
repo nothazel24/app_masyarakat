@@ -5,7 +5,7 @@ class Masyarakat extends Controller
    public function index()
    {
       if (!isset($_SESSION['username'])) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -60,7 +60,7 @@ class Masyarakat extends Controller
          $ktpPathUrl = BASEURL . '/uploads/img/' . $ktpName;
 
          if (trim($_POST['isi_laporan']) === '' || empty($_FILES['foto'])) {
-            Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+            Flasher::setFlash('Semua field wajib diisi!', '', 'danger', 'notifikasi');
             header('Location: ' . BASEURL . '/masyarakat/laporan');
             exit;
          }
@@ -74,15 +74,15 @@ class Masyarakat extends Controller
                'foto' => $ktpPathUrl,
                'status' => 'belum terverifikasi',
             ])) {
-               Flasher::setFlash('Laporan berhasil', 'dikirim!', 'success');
+               Flasher::setFlash('Laporan berhasil', 'dikirim!', 'success', 'notifikasi');
             } else {
-               Flasher::setFlash('Laporan gagal', 'disimpan', 'danger');
+               Flasher::setFlash('Laporan gagal', 'disimpan', 'danger', 'notifikasi');
             }
          } else {
-            Flasher::setFlash('Upload file', 'gagal', 'danger');
+            Flasher::setFlash('Upload file', 'gagal', 'danger', 'notifikasi');
          }
 
-         header('Location: ' . BASEURL . '/masyarakat/laporan');
+         header('Location: ' . BASEURL . '/masyarakat');
          exit;
       } else {
          $data['masyarakat'] = $this->model('Masyarakat_model')->getMasyarakatBySession();

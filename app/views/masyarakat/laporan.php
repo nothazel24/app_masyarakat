@@ -17,7 +17,7 @@
                <input type="hidden" name="nik" id="nik" value="<?= $data['masyarakat']['nik'] ?>">
 
                <div class="form-group">
-                  <label for="tgl_pengaduan">Laporan</label>
+                  <label for="tgl_pengaduan">Laporan <em class="text-muted">*Sertakan alamat</em></label>
                   <textarea name="isi_laporan" id="isi_laporan" class="form-control" placeholder="Isi laporanmu" style="height: 10rem;"></textarea>
                </div>
 
@@ -34,7 +34,7 @@
                <hr class="mt-4">
 
                <div class="form-group">
-                  <label for="foto">Pilih file <em class="text-muted">*KTP Pengguna</em></label>
+                  <label for="foto">Pilih file <em class="text-muted">*Bukti Kejadian</em></label>
                   <input type="file" class="form-control" id="foto" name="foto" required />
                </div>
 

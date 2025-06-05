@@ -1,3 +1,26 @@
+<!-- LOGOUT MODAL -->
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h5 class="modal-title text-white">Pemberitahuan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="my-2">Anda yakin ingin keluar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <a href="<?= BASEURL; ?>/login/logout">
+            <button type="button" class="btn btn-danger">Keluar</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <aside class="sidebar d-flex flex-column justify-content-start p-3 col-md-3 col-lg-3 position-fixed shadow" style="width: 400px; background-color: #fefefe; min-height: 100vh;" id="sidebar">
 
    <div class="logo my-5 px-4">
@@ -38,7 +61,7 @@
          </ul>
 
          <!-- LOGOUT BUTTONS -->
-         <a href="<?= BASEURL; ?>/login/logout" target="_self" style="text-decoration: none;" class="mt-5 mx-2 d-flex flex-row justify-content-start align-items-center" onclick="return confirm('Anda yakin ingin Logout?')">
+         <a href="#" style="text-decoration: none;" class="mt-5 mx-2 d-flex flex-row justify-content-start align-items-center" data-target="#logout" data-toggle="modal">
             <img src="<?= BASEURL; ?>/assets/icons/logout.svg" width="30" style="opacity: 75%;">
             <b class="text-dark mx-2">Logout</b>
          </a>

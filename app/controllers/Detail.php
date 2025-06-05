@@ -5,7 +5,7 @@ class Detail extends Controller
    public function detail()
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] === 'admin' && $_SESSION['level'] === 'petugas') {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -22,7 +22,7 @@ class Detail extends Controller
    public function tambahpetugas()
    {
       if (!isset($_SESSION['username']) || $_SESSION['level'] !== 'admin') {
-         Flasher::setFlash('Anda Bukan Admin!', '', 'warning');
+         Flasher::setFlash('Anda Bukan Admin!', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
@@ -48,17 +48,17 @@ class Detail extends Controller
          ];
 
          if (trim($_POST['username']) === '' || trim($_POST['password']) === '' || trim($_POST['nama_petugas']) === '' || trim($_POST['telp']) === '' || trim($_POST['level']) === '') {
-            Flasher::setFlash('Semua field wajib diisi!', '', 'danger');
+            Flasher::setFlash('Semua field wajib diisi!', '', 'danger', 'notifikasi');
             header('Location: ' . BASEURL . '/detail/tambahpetugas');
             exit;
          }
 
          if ($this->model('Petugas_model')->tambahDataPetugas($data)) {
-            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success', 'notifikasi');
             header('Location: ' . BASEURL . '/detail/tambah');
             exit;
          } else {
-            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger', 'notifikasi');
             header('Location: ' . BASEURL . '/detail/tambah');
             exit;
          }
@@ -76,7 +76,7 @@ class Detail extends Controller
    {
 
       if (!isset($_SESSION['username'])) {
-         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning');
+         Flasher::setFlash('Anda harus login terlebih dahulu', '', 'warning', 'notifikasi');
          header('Location: ' . BASEURL . '/login');
          exit;
       }
@@ -86,7 +86,7 @@ class Detail extends Controller
       $data['detail_laporan'] = $this->model('Pengaduan_model')->getLaporanByid($id);
 
       if (!$data['detail_laporan']) {
-         Flasher::setFlash('gagal', 'ditemukan', 'danger');
+         Flasher::setFlash('gagal', 'ditemukan', 'danger', 'notifikasi');
          header('Location: ' . BASEURL . '/masyarakat');
          exit;
       }

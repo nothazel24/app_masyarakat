@@ -124,7 +124,7 @@ class Masyarakat_model
    public function getMasyarakatBySession() {
       if (!isset($_SESSION['nik'])) {
          header('Location: ' . BASEURL . '/login');
-         Flasher::setFlash('Anda belum login!', '', 'danger');
+         Flasher::setFlash('Anda belum login!', '', 'danger', 'notifikasi');
          exit;
       }
 
