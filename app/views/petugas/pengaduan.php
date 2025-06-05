@@ -1,5 +1,29 @@
 <?php Flasher::flash(); ?>
 
+<!-- DELETE MODAL -->
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header bg-info">
+            <h5 class="modal-title text-white">Pemberitahuan</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <p class="my-2">Anda yakin ingin menghapusnya?</p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+
+            <a id="btn-delete-confirm" href="#" class="btn btn-danger">Hapus</a>
+         </div>
+      </div>
+   </div>
+</div>
+
+</div> <!-- END TAG MODAL -->
+
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
@@ -62,9 +86,7 @@
                         <div class="d-flex justify-content-start align-items-center">
                            <a href="<?= BASEURL; ?>/petugas/detail/<?= $laporan['id_pengaduan']; ?>" class="text-dark mr-3" style="text-decoration: none;" target="_self">Detail</a>
 
-                           <button class="btn btn-danger btn-sm">
-                              <a href="<?= BASEURL; ?>/petugas/hapuspengaduan/<?= $laporan['id_pengaduan']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
-                           </button>
+                           <a class="btn btn-danger btn-sm text-white btn-delete" style="text-decoration: none;" data-target="#delete" data-toggle="modal" data-id="<?= $laporan['id_pengaduan']; ?>">Hapus</a>
                         </div>
                      </td>
 
@@ -110,5 +132,5 @@
       </nav>
 
 
-   </div> <!-- container cloding tag-->
+   </div> <!-- container closing tag-->
 </div>

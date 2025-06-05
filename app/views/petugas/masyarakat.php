@@ -1,5 +1,29 @@
 <?php Flasher::flash(); ?>
 
+<!-- DELETE MODAL -->
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+         <div class="modal-header bg-info">
+            <h5 class="modal-title text-white">Pemberitahuan</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <p class="my-2">Anda yakin ingin menghapusnya?</p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+
+            <a id="btn-delete-confirm3" href="#" class="btn btn-danger">Hapus</a>
+         </div>
+      </div>
+   </div>
+</div>
+
+</div> <!-- END TAG MODAL -->
+
 <div class="d-flex flex-row">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
@@ -42,9 +66,7 @@
 
                            <a href="<?= BASEURL; ?>/petugas/editmasyarakat/<?= $msr['nik']; ?>" class="text-primary mr-3 text-dark" style="text-decoration: none;" data-nik="<?= $msr['nik'] ?>">Edit</a>
 
-                           <button class="btn btn-danger btn-sm">
-                              <a href="<?= BASEURL; ?>/petugas/hapusmasyarakat/<?= $msr['nik']; ?>" class="text-white" style="text-decoration: none;" onclick="return confirm('Anda yakin?')">Hapus</a>
-                           </button>
+                           <a class="btn btn-danger btn-sm text-white btn-delete" style="text-decoration: none;" data-target="#delete" data-toggle="modal" data-id="<?= $msr['nik']; ?>">Hapus</a>
                         </div>
                      </td>
                   </tr>
