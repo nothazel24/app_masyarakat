@@ -1,52 +1,56 @@
-# Public complaint service website project by group 7
+# app_masyarakat
 
-### Preview
+![Last Commit](https://img.shields.io/github/last-commit/nothazel24/app_masyarakat?style=flat-square)
+![PHP](https://img.shields.io/badge/PHP-7.4+-777BB4?style=flat-square&logo=php&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-4.5-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-5.7+-4479A1?style=flat-square&logo=mysql&logoColor=white)
 
-<p align="center">Login page</p>
-<img src="preview/login.png">
-<hr>
+📌 **app_masyarakat** is a web-based public complaint management system built with PHP (native), Bootstrap, and MySQL.
 
-<p align="center">Register page</p>
-<img src="preview/register.png">
-<hr>
 
-<p align="center">Home page</p>
-<img src="preview/masyarakat-home.png">
-<hr>
+---
 
-<p align="center">Home page</p>
-<img src="preview/masyarakat-home2.png">
-<hr>
+##  Table of Contents
 
-<p align="center">Laporan(masyarakat) page</p>
-<img src="preview/masyarakat-laporan.png">
-<hr>
+- [app\_masyarakat](#app_masyarakat)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Features](#features)
+  - [Partner](#partner)
+  - [Installation](#installation)
+    - [1. Clone the Repository](#1-clone-the-repository)
 
-<p align="center">Dashboard page</p>
-<img src="preview/petugas-dashboard.png">
-<hr>
+---
 
-<p align="center">List laporan page</p>
-<img src="preview/petugas-listLaporan.png">
-<hr>
+##  Description
 
-<p align="center">List Masyarakat page</p>
-<img src="preview/petugas-listMasyarakat.png">
-<hr>
+`app_masyarakat` is a public reporting application that enables users (citizens and officers) to submit and manage complaints online. This system can be used as a case study or prototype for e-Government web applications.
 
-<p align="center">List Petugas page</p>
-<img src="preview/petugas-listPetugas.png">
-<hr>
+---
 
-<p align="center">List Pengaduan page</p>
-<img src="preview/petugas-pengaduan.png">
-<hr>
+##  Features
 
-#### Extra
+- Authentication for citizens and officers
+- Submit reports with descriptions and photos
+- Track report status: verified, in process, completed
+- Search reports by date
+- Role-based user management (admin/officer)
+- Responsive layout using Bootstrap
+
+---
+
+## Partner 
 Thanks to all my partner on this project.
 
-**Rais mujjaddid A.** as a designer of website flow and diagram
+- **Rais mujjaddid A.** as a designer of website flow and diagram
+- **M. Rifqi** as a designer of database
+- **Yoan Kavallera S** as a designer of database
 
-**M. Rifqi** as a designer of database
+---
 
-**Yoan Kavallera S** as a designer of database
+##  Installation
+
+###  1. Clone the Repository
+```bash
+git clone https://github.com/nothazel24/app_masyarakat.git
