@@ -7,7 +7,7 @@
       <p>Silahkan masukkan detail akun anda!</p>
    </div>
 
-   <div class="p-5 w-50 mx-auto rounded shadow" style="background-color:rgb(255, 255, 255);">
+   <div class="p-5 w-50 mx-auto rounded shadow border-container" style="background-color:rgb(255, 255, 255);">
 
       <h3 class="pb-1"><strong>E-Report</strong></h3>
 

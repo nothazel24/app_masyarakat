@@ -21,7 +21,7 @@
    </div>
 </div>
 
-<aside class="sidebar d-flex flex-column justify-content-start p-3 col-md-3 col-lg-3 position-fixed shadow" style="width: 400px; background-color: #fefefe; min-height: 100vh;" id="sidebar">
+<aside class="sidebar d-flex flex-column justify-content-start p-3 col-md-3 col-lg-3 position-fixed shadow rounded-right" style="width: 400px; background-color: #fefefe; min-height: 100vh;" id="sidebar">
 
    <div class="logo my-5 px-4">
       <h2><a href="#" target="_self" class=" text-dark font-weight-bold" style="text-decoration: none;">E-Report</a></h2>
@@ -46,48 +46,54 @@
 
             <li>
                <a href="<?= BASEURL; ?>/petugas/" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%">
-                  <img src="<?= BASEURL; ?>/assets/icons/home.svg" width="30" style="opacity: 75%">
+                  <img src="<?= BASEURL; ?>/assets/icons/home.svg" width="28" style="opacity: 75%">
                   Dashboard
                </a>
             </li>
 
             <li>
                <a href="<?= BASEURL; ?>/petugas/pengaduan" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%;">
-                  <img src="<?= BASEURL; ?>/assets/icons/pengaduan.svg" width="30" style="opacity: 75%">
+                  <img src="<?= BASEURL; ?>/assets/icons/pengaduan.svg" width="28" style="opacity: 75%">
                   Pengaduan
                </a>
             </li>
 
             <li>
                <a href="<?= BASEURL; ?>/petugas/petugas" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%;">
-                  <img src="<?= BASEURL; ?>/assets/icons/petugas.svg" width="30" style="opacity: 75%">
+                  <img src="<?= BASEURL; ?>/assets/icons/petugas.svg" width="28" style="opacity: 75%">
                   Petugas
                </a>
             </li>
 
             <li>
                <a href="<?= BASEURL; ?>/petugas/masyarakat" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%;">
-                  <img src="<?= BASEURL; ?>/assets/icons/masyarakat.svg" width="30" style="opacity: 75%">
+                  <img src="<?= BASEURL; ?>/assets/icons/masyarakat.svg" width="28" style="opacity: 75%">
                   Masyarakat
                </a>
             </li>
 
             <li>
                <a href="<?= BASEURL; ?>/petugas/laporan" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%;">
-                  <img src="<?= BASEURL; ?>/assets/icons/laporan_petugas.svg" width="30" style="opacity: 75%">
+                  <img src="<?= BASEURL; ?>/assets/icons/laporan_petugas.svg" width="28" style="opacity: 75%">
                   Laporan
                </a>
             </li>
          </ul>
       </div>
 
+      <a href="#" style="text-decoration: none;" class="mt-5 mx-2 d-flex flex-row justify-content-start align-items-center logout" data-target="#logout" data-toggle="modal">
+         <img src="<?= BASEURL; ?>/assets/icons/logout.svg" width="30" style="opacity: 75%;">
+         <b class="text-dark mx-2">Logout</b>
+      </a>
+
    </div> <!-- sidebarWrapper closing tag -->
 
-   <br><br><br>
-
-   <a href="#" style="text-decoration: none;" class="mt-5 mx-2 d-flex flex-row justify-content-start align-items-center" data-target="#logout" data-toggle="modal">
-      <img src="<?= BASEURL; ?>/assets/icons/logout.svg" width="30" style="opacity: 75%;">
-      <b class="text-dark mx-2">Logout</b>
-   </a>
+   <img src="<?= BASEURL; ?>/assets/img/wave.svg" style="width: 300px; height:15vh;  margin-left: -4rem;">
 
 </aside> <!-- sidebar closing tag-->
+
+<div class="bg-info">
+   <div class="text-right pb-1">
+      <em class="p-2 text-white" style="font-size: .7rem;"><strong>E-Report</strong> Public Complain Service</em>
+   </div>
+</div>

@@ -187,7 +187,14 @@ class Petugas extends Controller
    {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
+         Flasher::setFlash('Silahkan masukkan keyword!', '', 'danger', 'notifikasi');
          header('Location:' . BASEURL .  '/petugas/masyarakat');
+         exit;
+      }
+
+      if (!ctype_digit($_POST["keyword"])) {
+         Flasher::setFlash('Pencarian NIK hanya boleh berupa angka!', '', 'danger', 'notifikasi');
+         header('Location: ' . BASEURL . '/petugas/masyarakat');
          exit;
       } else {
          $keyword = trim($_POST['keyword']);
@@ -200,7 +207,14 @@ class Petugas extends Controller
    {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
+         Flasher::setFlash('Silahkan masukkan keyword!', '', 'danger', 'notifikasi');
          header('Location:' . BASEURL .  '/petugas/petugas');
+         exit;
+      }
+
+      if (!preg_match("/^[a-zA-Z0-9_]+$/", $_POST['keyword'])) {
+         Flasher::setFlash('Pencarian username hanya boleh Huruf, Angka, dan Underscore tanpa spasi!', '', 'danger', 'notifikasi');
+         header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       } else {
          $keyword = trim($_POST['keyword']);
@@ -213,6 +227,7 @@ class Petugas extends Controller
    {
       // VALIDASI DATA KEYWORD
       if (!isset($_POST['keyword']) || empty(trim($_POST['keyword']))) {
+         Flasher::setFlash('Silahkan masukkan keyword!', '', 'danger', 'notifikasi');
          header('Location:' . BASEURL .  '/petugas/pengaduan');
          exit;
       } else {
@@ -258,7 +273,7 @@ class Petugas extends Controller
          header('Location: ' . BASEURL . '/petugas/petugas');
          exit;
       }
-      
+
       $result = $this->model('Petugas_model')->getPetugasById($id);
 
       if (!$result) {
