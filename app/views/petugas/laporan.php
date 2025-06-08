@@ -32,11 +32,18 @@
       <!-- Data result Layout section -->
       <?php if (isset($_POST['submit'])) : ?>
 
+         <?php 
+            $tgl_awal = $_POST['tgl_awal'];   
+            $tgl_akhir = $_POST['tgl_akhir'];   
+         ;?>
+
          <?php if (!empty($data['laporan'])) : ?>
             <div class="rounded border border-black ml-4 mt-5">
                <div class="d-flex justify-content-between align-self-center pl-4 pr-4 pt-3">
                   <h2>Data laporan</h2>
-                  <button class="btn btn-danger text-white font-weight-bold pl-4 pr-4 rounded">Export PDF</button>
+                  <a href="<?= BASEURL; ?>/export/pdf/<?= $tgl_awal; ?>/<?= $tgl_akhir;?>" style="color: #fefefe; text-decoration: none;">
+                     <button class="btn btn-danger text-white font-weight-bold pl-4 pr-4 rounded">Export PDF</button>
+                  </a>
                </div>
                <hr>
 

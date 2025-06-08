@@ -73,7 +73,8 @@ class Pengaduan_model
    }
 
    // BUAT MENGHITUNG JUMLAH LAPORAN USER
-   public function getLaporanBySession($nik) {
+   public function getLaporanBySession($nik)
+   {
       $this->db->query("
          SELECT SUM(status ='proses') AS proses, SUM(status ='proses') AS proses FROM pengaduan WHERE nik = :nik
       ");
