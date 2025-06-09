@@ -24,7 +24,7 @@
 <aside class="sidebar d-flex flex-column justify-content-start p-3 col-md-3 col-lg-3 position-fixed shadow rounded-right" style="width: 400px; background-color: #fefefe; min-height: 100vh;" id="sidebar">
 
    <div class="logo my-5 px-4">
-      <h2><a href="#" target="_self" class=" text-dark font-weight-bold" style="text-decoration: none;">E-Report</a></h2>
+      <h2><a href="<?= BASEURL; ?>" target="_self" class=" text-dark font-weight-bold" style="text-decoration: none;">E-Report</a></h2>
       <div class="bg-info pl-1 pr-4 text-white font-weight-bold" style="height: fit-content; width: fit-content; font-size: 12px; margin-top: -5px;">make life easier.</div>
    </div>
 
@@ -87,8 +87,6 @@
       </a>
 
    </div> <!-- sidebarWrapper closing tag -->
-
-   <img src="<?= BASEURL; ?>/assets/img/wave.svg" style="width: 300px; height:15vh;  margin-left: -4rem;">
 
 </aside> <!-- sidebar closing tag-->
 

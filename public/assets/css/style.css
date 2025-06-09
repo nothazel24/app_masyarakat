@@ -1,10 +1,52 @@
 * {
-   font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
+/* HOMEPAGE ANIMATION */
+.collapse .navbar-nav .nav-link {
+   transition: transform 0.3s ease;
+}
+
+.collapse .navbar-nav .nav-link:hover {
+  transform: translateX(-5px);
+  font-weight: bold;
+}
+
+.card-box {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background-color: rgba(58, 68, 80, 0.34);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: 40vw;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card-box:hover {
+  transform: translateY(-4px);
+}
+
+.support-card-box {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background-color: rgba(58, 68, 80, 0.34);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    width: 40vw;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.support-card-box:hover {
+  transform: translateY(-4px);
+}
+
+
+/* SIDEBAR ANIMATION */
 /* border container */
 .border-container {
-   border-top: 5px solid #17a2b8;
+  border-top: 5px solid #17a2b8;
 }
 
 /* Efek hover untuk link menu */
@@ -15,7 +57,7 @@
 
 .sidebarWrapper ul li a:hover {
   font-size: 1rem;
-  padding: .2rem 0 .2rem .5rem;
+  padding: 0.2rem 0 0.2rem 0.5rem;
   border-left: 5px solid #17a2b8;
   background-color: rgba(202, 202, 202, 0.39);
   text-decoration: none;
@@ -33,7 +75,7 @@
 
 /* Logout Button */
 .sidebarWrapper .logout:hover {
-  padding: .2rem 0 .2rem .4rem;
+  padding: 0.2rem 0 0.2rem 0.4rem;
   border-left: 5px solid #dc3545;
   background-color: rgba(255, 0, 0, 0.39);
   border-radius: 5px;
