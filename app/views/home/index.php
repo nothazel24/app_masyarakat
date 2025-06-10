@@ -1,32 +1,36 @@
-<div class="wrapper" style="background: linear-gradient(135deg, #17a2b8, #005f73);">
+<div class="wrapper" style="overflow-x: hidden;">
 
    <!-- SECTION 1 -->
    <div class="container-fluid d-flex flex-column justify-content-center" style="height: 85dvh; margin-top: 4rem;">
 
-      <div class="container-fluid" style="margin-top: -5rem;">
-         <div class="call-center float-right my-5 rounded p-2" style="width: 20%; border-left: 5px solid rgb(23, 184, 58); background-color:rgba(23, 163, 184, 0.45);">
-            <a href="#" class="d-flex flex-row align-items-center text-white font-weight-bold">
-               🎉 Updates!
-            </a>
-         </div>
-      </div>
+      <div class="inner-content container-fluid d-flex flex-row px-5 mt-4">
 
-      <div class="inner-content container-fluid d-flex flex-column align-items-center">
-         <div class="content1 text-justify mx-auto text-center mb-3 text-white" style="width: 70%;">
-            <p class="font-weight-bold" style="font-size: 2.6rem;">KIRIM LAPORAN JADI MAKIN WHOSSSHH 🚀</p>
-            <p style="font-size: 1.2rem; margin-top: -1rem;">Tanpa antre, tanpa ribet, semua bisa <span style="background-color: rgba(35, 95, 104, 0.5)" class="pr-3">diakses 24/7.</span></p>
+         <div class="content1 d-flex flex-row text-left mb-3 text-white justify-content-between">
+
+            <div class="d-flex flex-column text-dark mt-5" style="width: 65dvw;">
+               <p class="font-weight-bold" style="font-size: 2.6rem;">KIRIM LAPORAN JADI MAKIN WHOSSSHH 🚀</p>
+               <p style="font-size: 1.2rem; margin-top: 0; width: 70%;">Tidak perlu antre atau ribet, semua bisa dilakukan dari rumah. Layanan tersedia 24/7 dengan tanggapan cepat dari petugas profesional kami.</p>
+               <p><small>✅ Lebih dari 1.000 laporan telah kami proses</small></p>
+
+               <div class="button my-3" width="10%">
+                  <a href="#" style="text-decoration: none; border-radius: 20px; text-transform: capitalize; width: 15%; background-color:rgb(20, 166, 196); color: rgba(255, 255, 255, 0.94);" class="action px-4 py-2 font-weight-bold text-center">
+                     Lapor sekarang!
+                  </a>
+               </div>
+            </div>
+
          </div>
 
-         <a href="#" style="text-decoration: none; border-radius: 20px; text-transform: capitalize;" class="bg-info px-4 py-2 font-weight-bold text-white">
-            Get Started
-         </a>
+         <div class="extra" style="opacity: 75%; margin-top: 3rem; margin-right: -8rem; z-index: -10;">
+            <img src="<?= BASEURL; ?>/assets/img/home-bg.svg" width="500">
+         </div>
       </div>
 
    </div>
 
 
    <!-- SECTION 2 -->
-   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="margin-top: -10rem;">
       <defs>
          <filter id="waveShadow" x="-50%" y="-50%" width="200%" height="200%">
             <feDropShadow dx="0" dy="-4" stdDeviation="6" flood-color="#000" flood-opacity="0.25" />
@@ -36,7 +40,7 @@
    </svg>
 
    <!-- ABOUT ME SECTION -->
-   <div class="container-fluid d-flex flex-column justify-content-center" style="background-color: #005f73; padding: 0rem 0rem 5rem 0rem; margin-top: -1rem;" id="aboutMe-content">
+   <div class="container-fluid d-flex flex-column justify-content-center" style="background: #005f73; padding: 0rem 0rem 5rem 0rem; margin-top: -2rem;" id="aboutMe-content">
 
       <div class="content1 mx-auto text-center text-white p-5 rounded" style="width: 80%; margin-top: 3rem;">
          <h1 class="font-weight-bold">Tentang Kami</h1>
@@ -47,7 +51,7 @@
 
 
    <!-- FEATURE SECTION -->
-   <div class="container-fluid py-5" style="background-color:#005f73;" id="feature-content">
+   <div class="container-fluid py-5" style="background: #005f73;" id="feature-content">
 
       <div class="d-flex flex-column mx-5 my-4 text-white">
 
@@ -64,10 +68,10 @@
                </div>
             </div>
 
-            <div class="card-box p-3 mb-3 shadow-sm" style="border-left: 5px solid #007BFF;">
+            <div class="card-box p-3 mb-3 shadow-sm" style="border-left: 5px solid #6FFFCE;">
                <div class="d-flex flex-row ml-3">
                   <img src="<?= BASEURL; ?>/assets/icons/active.svg" width="40">
-                  <p class="mx-4 mt-3 font-weight-bold" style="font-size: 1.8rem; color: #007BFF;">Tersedia 24/7</p>
+                  <p class="mx-4 mt-3 font-weight-bold" style="font-size: 1.8rem; color: #6FFFCE;">Tersedia 24/7</p>
                </div>
                <div class="mx-4">
                   <p>Beroperasi 24/7, sehingga meniadakan kemungkinan untuk telatnya penanganan kami</p>
@@ -88,10 +92,10 @@
                </div>
             </div>
 
-            <div class="card-box p-3 mb-3 shadow-sm" style="border-left: 5px solid #1a237e;">
+            <div class="card-box p-3 mb-3 shadow-sm" style="border-left: 5px solid #7ECE6F;">
                <div class="d-flex flex-row ml-3">
                   <img src="<?= BASEURL; ?>/assets/icons/professional.svg" width="40">
-                  <p class="mx-4 mt-3 font-weight-bold" style="font-size: 1.8rem; color: #1a237e;">Petugas professional</p>
+                  <p class="mx-4 mt-3 font-weight-bold" style="font-size: 1.8rem; color: #7ECE6F;">Petugas professional</p>
                </div>
                <div class="mx-4">
                   <p>Dilayani oleh para petugas profesional yang siap membantu anda.</p>
@@ -104,7 +108,7 @@
    </div>
 
    <!-- SUPPORT  SECTION -->
-   <div class="container-fluid d-flex flex-column justify-content-center" style="background: linear-gradient(to bottom, #015F73, #004a5c, #003745); padding: 4rem 0rem 4rem 0rem;" id="support-content">
+   <div class="container-fluid d-flex flex-column justify-content-center" style="background-color: #005f73; padding: 4rem 0rem 4rem 0rem;" id="support-content">
 
       <h2 class="mx-auto text-white mb-5">Support ❤️</h2>
 
@@ -136,7 +140,7 @@
    </div>
 
    <!-- FOOTER -->
-   <div class="container-fluid d-flex flex-column p-5" style="height: 50dvh; background-color: #003745;">
+   <div class="container-fluid d-flex flex-column p-5" style="height: 50dvh; background-color:rgb(0, 79, 95); border-top: 1px solid rgba(255, 255, 255, 0.125);">
 
       <div class="w-100 text-white">
 
@@ -169,10 +173,6 @@
          </div>
 
       </div>
-   </div>
-
-   <div class=" text-white py-3 px-5" style="background-color:rgb(2, 50, 59);">
-      <span style="opacity: 70%;">Made with ❤️ by: @nothazel24</span>
    </div>
 
 </div>

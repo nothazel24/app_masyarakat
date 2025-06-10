@@ -25,4 +25,4 @@
    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
-<body style="height: 100vh; background-color: #d1f2f9;">
+<body style="height: 100vh; background-color: rgb(250, 248, 248);">

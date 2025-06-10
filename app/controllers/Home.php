@@ -3,7 +3,7 @@
 class Home extends Controller {
    public function index() {
 
-      $data['judul'] = "Beranda";
+      $data['judul'] = "E-report | Make life easier";
 
       // Homepage views
       $this->view('templates/header', $data);

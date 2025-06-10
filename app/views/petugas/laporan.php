@@ -1,4 +1,4 @@
-<div class="d-flex flex-row" style="height: 100vh; background-color:rgb(250, 248, 248);">
+<div class="d-flex flex-row" style="height: 100vh;">
 
    <div class="container-fluid d-flex flex-column mt-5" style="margin-left: 26%; flex-grow: 1;">
       <h1 class="mt-4 mb-4 ml-2 font-weight-bold">Generate Laporan</h1>

@@ -21,7 +21,7 @@
    </div>
 </div>
 
-<aside class="sidebar d-flex flex-column justify-content-start p-3 col-md-3 col-lg-3 position-fixed shadow rounded-right" style="width: 400px; background-color: #fefefe; min-height: 100vh;" id="sidebar">
+<aside class="sidebar d-flex rounded-right shadow-sm flex-column justify-content-start p-3 col-md-3 col-lg-3 position-fixed" style="width: 400px; background-color: #fefefe; min-height: 100vh;" id="sidebar">
 
    <div class="logo my-5 px-4">
       <h2><a href="<?= BASEURL; ?>" target="_self" class=" text-dark font-weight-bold" style="text-decoration: none;">E-Report</a></h2>
@@ -90,7 +90,7 @@
 
 </aside> <!-- sidebar closing tag-->
 
-<div class="bg-info">
+<div style="background: #17a2b8;">
    <div class="text-right pb-1">
       <em class="p-2 text-white" style="font-size: .7rem;"><strong>E-Report</strong> Public Complain Service</em>
    </div>

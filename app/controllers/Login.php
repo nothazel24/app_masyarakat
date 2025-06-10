@@ -75,8 +75,9 @@ class Login extends Controller
 
    public function logout()
    {
-      session_destroy();
-      header('Location: ' . BASEURL . '/home');
+      unset($_SESSION['username']);
+      Flasher::setFlash('Akun berhasil logout!', '', 'success', 'notifikasi');
+      header('Location: ' . BASEURL . '/login');
       exit;
    }
 }
