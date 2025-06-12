@@ -7,8 +7,7 @@
 
       <!-- Laporan -->
       <div class="p-5 ml-4 border rounded" style="background-color:rgba(245, 245, 245, 0.64)">
-         <h2>Detail Akun anda</h2>
-         <hr>
+         <h2>Detail akun anda</h2>
 
          <div class="d-flex flex-row align-items-center justify-content-around ">
 
@@ -36,8 +35,7 @@
       </div> <!-- wrapper border/content1 -->
 
       <div class="py-5 ml-4">
-         <h2>History pengaduan</h2>
-         <hr class="my-4">
+         <h2 class="py-3">Riwayat pengaduan</h2>
 
          <?php if (!empty($data['laporan'])) : ?>
             <div class="table-responsive">

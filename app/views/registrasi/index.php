@@ -50,4 +50,6 @@
 
    <p class="font-weight-bold mx-auto text-info my-3">&copy; 2025 E-Report. All rights reserved.</p>
 
+   <img src="<?= BASEURL; ?>/assets/img/home-bg.svg" width="500" style="z-index: -999; margin-top: -21rem; opacity: 70%;">
+
 </div>

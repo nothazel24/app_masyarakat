@@ -72,12 +72,14 @@
                </a>
             </li>
 
-            <li>
-               <a href="<?= BASEURL; ?>/petugas/laporan" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%;">
-                  <img src="<?= BASEURL; ?>/assets/icons/laporan_petugas.svg" width="28" style="opacity: 75%">
-                  Laporan
-               </a>
-            </li>
+            <?php if ($_SESSION['level'] === 'admin') : ?>
+               <li>
+                  <a href="<?= BASEURL; ?>/petugas/laporan" class="my-3 d-flex flex-row justify-content-start align-items-center text-dark" style="text-decoration: none; gap: 10%;">
+                     <img src="<?= BASEURL; ?>/assets/icons/laporan_petugas.svg" width="28" style="opacity: 75%">
+                     Laporan
+                  </a>
+               </li>
+            <?php endif; ?>
          </ul>
       </div>
 

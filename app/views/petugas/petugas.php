@@ -32,9 +32,15 @@
 
       <div class="search container-fluid d-flex flex-row flex-wrap justify-content-between align-items-center my-3">
 
-         <div>
-            <a href="<?= BASEURL; ?>/detail/tambahpetugas" target="_self" style="text-decoration: none;"><button class="btn btn-success p-2 text-white font-weight-bold">+ Tambah petugas</button></a>
-         </div>
+         <?php if ($_SESSION['level'] === 'admin') : ?>
+            <div>
+               <a href="<?= BASEURL; ?>/detail/tambahpetugas" target="_self" style="text-decoration: none;"><button class="btn btn-success p-2 text-white font-weight-bold">+ Tambah petugas</button></a>
+            </div>
+
+         <?php else : ?>
+            <div></div>
+
+         <?php endif; ?>
 
          <div class="d-flex justify-content-end">
             <form action="<?= BASEURL; ?>/petugas/caripetugas/" method="post" class="form-inline" id="formCari">
@@ -54,7 +60,9 @@
                   <th>Username</th>
                   <th>No. Telp</th>
                   <th>Level</th>
-                  <th>Detail</th>
+                  <?php if ($_SESSION['level'] === 'admin') : ?>
+                     <th>Detail</th>
+                  <?php endif; ?>
                </tr>
             </thead>
 
@@ -68,13 +76,17 @@
                      <td><?= $ptgs['username']; ?></td>
                      <td><?= $ptgs['telp']; ?></td>
                      <td style="text-transform: capitalize; "><?= $ptgs['level']; ?></td>
-                     <td>
-                        <div class="d-flex justify-content-start align-items-center">
-                           <a href="<?= BASEURL; ?>/petugas/editpetugas/<?= $ptgs['id_petugas']; ?>" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
 
-                           <a class="btn btn-danger btn-sm text-white btn-delete" style="text-decoration: none;" data-target="#delete" data-toggle="modal" data-id="<?= $ptgs['id_petugas']; ?>">Hapus</a>
-                        </div>
-                     </td>
+                     <?php if ($_SESSION['level'] === 'admin') : ?>
+                        <td>
+                           <div class="d-flex justify-content-start align-items-center">
+                              <a href="<?= BASEURL; ?>/petugas/editpetugas/<?= $ptgs['id_petugas']; ?>" class="text-primary mr-3 text-dark" style="text-decoration: none;">Edit</a>
+
+                              <a class="btn btn-danger btn-sm text-white btn-delete" style="text-decoration: none;" data-target="#delete" data-toggle="modal" data-id="<?= $ptgs['id_petugas']; ?>">Hapus</a>
+                           </div>
+                        </td>
+                     <?php endif; ?>
+
                   </tr>
                <?php endforeach; ?>
 
